@@ -7,7 +7,7 @@ describe('Events class tested', () => {
   beforeAll(() => {
     document.body.innerHTML = '<button></button>';
 
-    mockEventFunction = jest.fn()
+    mockEventFunction = jest.fn();
     element = new Element('button');
     events = new Events(element);
   });
@@ -24,3 +24,15 @@ describe('Events class tested', () => {
     expect(mockEventFunction).not.toBeCalled();
   });
 });
+
+// events.on('click');
+// events.on('click focus', mockEventFunction);
+// events.on('focus', mockEventFunction)
+// events.off('click focus', mockEventFunction);
+// events.off('click focus');
+// events.off('focus');
+// events.off();
+// events.trigger('click');
+// events.trigger('click focus');
+// events.once('click');
+// events.once('click', mockEventFunction);

@@ -1,4 +1,4 @@
-const STORAGE = {};
+const EVENTS_STORE = {};
 const DOM_EVENTS = [
   'blur', 'change', 'click', 'contextmenu', 'dblclick', 'focus', 'focusin',
   'focusout', 'keydown', 'keypress', 'keyup', 'mousedown', 'mouseenter',
