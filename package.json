@@ -1,0 +1,35 @@
+{
+  "name": "Feature",
+  "version": "1.0.0",
+  "description": "helps us write better",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel public/index.html --no-cache",
+    "lint": "eslint src/**.js",
+    "build": "parcel build index.html"
+  },
+  "author": "Idan Goldman",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.5",
+    "@babel/plugin-transform-flow-strip-types": "^7.0.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.1.0",
+    "@babel/preset-env": "^7.1.5",
+    "babel-core": "^7.0.0-bridge",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.0.0",
+    "jest": "^23.6.0",
+    "jest-runner-eslint": "^0.7.1",
+    "node-sass": "^4.10.0",
+    "parcel-bundler": "^1.10.3",
+    "parcel-plugin-eslint": "^1.0.4"
+  },
+  "dependencies": {
+    "todomvc-app-css": "^2.1.2"
+  }
+}
