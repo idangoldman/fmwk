@@ -8,7 +8,7 @@ describe('Element class tested', () => {
   test('Should be an instance of HTMLElement', () => {
     document.body.innerHTML = '<a href="#" class="link">Link</a>';
     const element = new Element('.link');
-    expect(element).toBeInstanceOf(HTMLElement);
+    expect(element.raw).toBeInstanceOf(HTMLElement);
   });
 
   test('Should throw an error, no selectors were passed', () => {

@@ -1,17 +1,24 @@
-const Element = (selector = '') => {
-  let element;
+export default class Element {
+  constructor(selector = '') {
+    this.element = undefined;
+    this.selector = selector;
 
-  if (!selector.length) {
-    throw new Error(`- No HTML selectors were passed.`);
-  } else {
-    element = document.querySelector(selector)
+    if (!selector.length) {
+      throw new Error('- No HTML selectors were passed.');
+    } else {
+      this.element = document.querySelector(selector);
 
-    if (element === null) {
-      throw new Error(`- No HTML element was found with '${selector}' selector.`);
+      if (this.element === null) {
+        throw new Error(`- No HTML element was found with '${selector}' selector.`);
+      }
     }
   }
 
-  return element;
-};
+  get raw() {
+    return this.element;
+  }
 
-export default Object.freeze(Element);
+  get toString() {
+    return this.selector;
+  }
+}
