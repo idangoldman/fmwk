@@ -1,5 +1,5 @@
-import Events from '../events';
-import Element from '../element';
+import Events from '../index';
+import Element from '../../element';
 
 describe('Events class tested', () => {
   let element, events, mockEventFunction;
@@ -22,14 +22,14 @@ describe('Events class tested', () => {
     expect(mockEventFunction).toBeCalled();
   });
 
-  test('should remove the click event', () => {
+  test('should remove a click event', () => {
     events.on('click', mockEventFunction);
     events.off('click', mockEventFunction);
     element.raw.click();
     expect(mockEventFunction).not.toBeCalled();
   });
 
-  test('should fire 2 events, click and focus', () => {
+  test('should trigger 2 events, click and focus', () => {
     events.on('click focus', mockEventFunction);
     element.raw.click();
     element.raw.focus();
@@ -67,18 +67,18 @@ describe('Events class tested', () => {
     expect(mockEventFunction).not.toBeCalled();
   });
 
-  test('should call click event only once', () => {
-    events.once('click', mockEventFunction);
-    element.raw.click();
-    element.raw.click();
-    expect(mockEventFunction.mock.calls.length).toBe(1);
-  });
-
-  test('should trigger a click event', () => {
-    events.on('click', mockEventFunction);
-    events.trigger('click');
-    expect(mockEventFunction).toBeCalled();
-  });
+  // test('should call click event only once', () => {
+  //   events.once('click', mockEventFunction);
+  //   element.raw.click();
+  //   element.raw.click();
+  //   expect(mockEventFunction.mock.calls.length).toBe(1);
+  // });
+  //
+  // test('should trigger a click event', () => {
+  //   events.on('click', mockEventFunction);
+  //   events.trigger('click');
+  //   expect(mockEventFunction).toBeCalled();
+  // });
 });
 
 // errors

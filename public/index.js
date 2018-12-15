@@ -1,4 +1,4 @@
-import feature as component from '../src/index';
+import component from '../src/index';
 
 // feature('.todoapp', ({ element, events, pubsub, cookie, session, locals, router }) => {
 // page('.todoapp', ({ element, events }) => {
