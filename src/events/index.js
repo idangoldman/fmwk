@@ -17,16 +17,15 @@ export default class Events {
     });
   }
 
-  // once(name, callback) {
-  //   create(this.element.toString, name, callback).forEach(([type, listener]) => {
-  //     this.element.raw.addEventListener(type, function callOnce(event) {
-  //       event.target.removeEventListener(type, callOnce, false);
-  //       remove(this.element.toString, name, listener);
-  //       listener(event);
-  //     });
-  //   });
-  // }
-  //
+  once(name, callback) {
+    create(this.element.toString, name, callback).forEach(([type, listener]) => {
+      this.element.raw.addEventListener(type, (event) => {
+        remove(this.element.toString, type, listener);
+        listener(event);
+      }, { once: true, capture: false });
+    });
+  }
+
   // trigger(name, data) {
   //   this.element.raw.;
   // }

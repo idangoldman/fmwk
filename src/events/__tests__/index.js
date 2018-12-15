@@ -67,13 +67,13 @@ describe('Events class tested', () => {
     expect(mockEventFunction).not.toBeCalled();
   });
 
-  // test('should call click event only once', () => {
-  //   events.once('click', mockEventFunction);
-  //   element.raw.click();
-  //   element.raw.click();
-  //   expect(mockEventFunction.mock.calls.length).toBe(1);
-  // });
-  //
+  test('should call click event only once', () => {
+    events.once('click', mockEventFunction);
+    element.raw.click();
+    element.raw.click();
+    expect(mockEventFunction.mock.calls.length).toBe(1);
+  });
+
   // test('should trigger a click event', () => {
   //   events.on('click', mockEventFunction);
   //   events.trigger('click');
