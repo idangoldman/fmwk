@@ -3,8 +3,16 @@
     "browser": true,
     "jest/globals": true
   },
-  "extends": "airbnb-base",
+  "extends": [
+    "airbnb-base",
+    "plugin:jest/recommended"
+  ],
   "rules": {
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
     "no-extend-native": 0,
     "no-useless-escape": 0
   },

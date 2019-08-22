@@ -4,33 +4,32 @@
   "description": "helps us write better",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "start": "parcel public/index.html --no-cache",
-    "lint": "eslint src/**.js",
-    "build": "parcel build index.html",
-    "update-packages": "yarn upgrade --latest"
+    "test": "./node_modules/.bin/jest",
+    "start": "./node_modules/.bin/parcel public/index.html --no-cache",
+    "lint": "./node_modules/.bin/eslint src/**.js",
+    "build": "./node_modules/.bin/parcel build index.html"
   },
   "author": "Idan Goldman",
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.2.0",
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-transform-flow-strip-types": "^7.2.0",
-    "@babel/plugin-transform-modules-commonjs": "^7.2.0",
-    "@babel/preset-env": "^7.2.0",
-    "babel-core": "^7.0.0-bridge",
-    "babel-jest": "^23.6.0",
-    "eslint": "^5.10.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jest": "^22.1.2",
-    "jest": "^23.6.0",
-    "jest-runner-eslint": "^0.7.1",
-    "node-sass": "^4.11.0",
-    "parcel-bundler": "^1.10.3",
-    "parcel-plugin-eslint": "^1.0.4"
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-flow-strip-types": "^7.4.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.5.0",
+    "@babel/preset-env": "^7.5.5",
+    "babel-jest": "^24.9.0",
+    "eslint": "^6.2.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.15.2",
+    "jest": "^24.9.0",
+    "jest-runner-eslint": "^0.7.4",
+    "npm-check-updates": "^3.1.21",
+    "parcel-bundler": "^1.12.3",
+    "parcel-plugin-eslint": "^1.0.7",
+    "sass": "^1.22.10"
   },
   "dependencies": {
-    "todomvc-app-css": "^2.1.2"
+    "todomvc-app-css": "^2.2.0"
   }
 }
