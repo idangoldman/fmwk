@@ -1,4 +1,4 @@
-import { create, remove } from './store';
+import { insert, remove } from './store';
 
 export default class Events {
   constructor(element) {
@@ -6,7 +6,7 @@ export default class Events {
   }
 
   on(name, callback) {
-    create(this.element.toString, name, callback).forEach(([type, listener]) => {
+    insert(this.element.toString, name, callback).forEach(([type, listener]) => {
       this.element.raw.addEventListener(type, listener, false);
     });
   }
@@ -18,15 +18,11 @@ export default class Events {
   }
 
   once(name, callback) {
-    create(this.element.toString, name, callback).forEach(([type, listener]) => {
+    insert(this.element.toString, name, callback).forEach(([type, listener]) => {
       this.element.raw.addEventListener(type, (event) => {
         remove(this.element.toString, type, listener);
         listener(event);
       }, { once: true, capture: false });
     });
   }
-
-  // trigger(name, data) {
-  //   this.element.raw.;
-  // }
 }

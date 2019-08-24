@@ -3,7 +3,7 @@ const DOM_EVENT_NAMES = new Set([
   'blur', 'change', 'click', 'contextmenu', 'dblclick', 'focus', 'focusin',
   'focusout', 'keydown', 'keypress', 'keyup', 'mousedown', 'mouseenter',
   'mouseleave', 'mousemove', 'mouseout', 'mouseover', 'mouseup', 'resize',
-  'scroll', 'select', 'submit', 'reset',
+  'scroll', 'select', 'submit', 'reset'
 ]);
 
 const validateEventNames = (name) => {
@@ -16,7 +16,7 @@ const validateEventNames = (name) => {
   return names;
 };
 
-export const create = (selector = '', eventNames = [], callback = undefined) => {
+export const insert = (selector = '', eventNames = [], callback = undefined) => {
   const events = EVENTS_STORE.get(selector) || new Map();
   const names = validateEventNames(eventNames);
   const output = [];

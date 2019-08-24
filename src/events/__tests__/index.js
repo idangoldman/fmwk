@@ -74,14 +74,4 @@ describe('Events class tested', () => {
     expect(mockEventFunction.mock.calls.length).toBe(1);
   });
 
-  // test('should trigger a click event', () => {
-  //   events.on('click', mockEventFunction);
-  //   events.trigger('click');
-  //   expect(mockEventFunction).toBeCalled();
-  // });
 });
-
-// errors
-// events.on('click');
-// events.once('click');
-// events.trigger('click focus');
