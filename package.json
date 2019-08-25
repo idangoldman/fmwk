@@ -1,11 +1,14 @@
 {
   "name": "Feature",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "helps us write better",
   "main": "index.js",
+  "engines": {
+    "node": "10.16.0"
+  },
   "scripts": {
-    "test":  "./node_modules/.bin/jest",
-    "test_watch":  "./node_modules/.bin/jest --watchAll",
+    "test": "./node_modules/.bin/jest",
+    "test_watch": "./node_modules/.bin/jest --watchAll",
     "start": "./node_modules/.bin/parcel public/index.html --no-cache",
     "lint": "./node_modules/.bin/eslint src/**.js",
     "build": "./node_modules/.bin/parcel build index.html"
@@ -19,7 +22,7 @@
     "@babel/plugin-transform-modules-commonjs": "^7.5.0",
     "@babel/preset-env": "^7.5.5",
     "babel-jest": "^24.9.0",
-    "eslint": "^6.2.1",
+    "eslint": "^6.2.2",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^22.15.2",
@@ -27,10 +30,11 @@
     "jest-runner-eslint": "^0.7.4",
     "npm-check-updates": "^3.1.21",
     "parcel-bundler": "^1.12.3",
-    "parcel-plugin-eslint": "^1.0.7",
-    "sass": "^1.22.10"
+    "parcel-plugin-eslint": "^1.0.7"
   },
   "dependencies": {
+    "handlebars": "^4.1.2",
+    "jquery": "^3.4.1",
     "todomvc-app-css": "^2.2.0"
   }
 }

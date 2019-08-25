@@ -11,7 +11,7 @@ task "update" do
 end
 
 task "upgrade" do
-  exec("ncu -u")
+  exec("ncu -u; rake reinstall")
 end
 
 task "dev" do
