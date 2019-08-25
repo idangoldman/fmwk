@@ -1,18 +1,16 @@
 import { component } from 'feature';
 
-component.render.engine('nunjucks'); // default
-
 // {
 //   element,
 //   events,
-//   pubsub,
-//   cookie,
-//   session,
 //   local,
-//   render
-//   rest,
+//   session,
+//   cookie,
 //   router,
-//   worker
+//   rest,
+//   pubsub,
+//   render
+//   worker (cache?)
 // }
 
 
