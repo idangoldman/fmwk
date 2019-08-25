@@ -26,6 +26,10 @@ task "test" do
   exec("yarn test")
 end
 
+task "test_watch" do
+  exec("yarn test_watch")
+end
+
 task "lint" do
   exec("yarn lint")
 end

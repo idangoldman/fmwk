@@ -2,4 +2,4 @@
 
 exports[`Element class tested Should throw an error, no selectors were passed 1`] = `"- No HTML selectors were passed."`;
 
-exports[`Element class tested Should throw an error, selector not found 1`] = `"- No HTML element was found with '.link' selector."`;
+exports[`Element class tested Should throw an error, selector not found 1`] = `"- No HTML element was found with '.linked' selector."`;

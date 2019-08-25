@@ -4,7 +4,8 @@
   "description": "helps us write better",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/jest",
+    "test":  "./node_modules/.bin/jest",
+    "test_watch":  "./node_modules/.bin/jest --watchAll",
     "start": "./node_modules/.bin/parcel public/index.html --no-cache",
     "lint": "./node_modules/.bin/eslint src/**.js",
     "build": "./node_modules/.bin/parcel build index.html"

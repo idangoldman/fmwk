@@ -9,9 +9,11 @@ const DOM_EVENT_NAMES = new Set([
 const validateEventNames = (name) => {
   let names = name.split(' ');
 
-  if (!names.every(validName => DOM_EVENT_NAMES.has(validName))) {
-    names = [];
-  }
+  names.every(validName => {
+    if (!DOM_EVENT_NAMES.has(validName)) {
+      throw new Error(`- No DOM event was found with '${validName}' name.`);
+    }
+  });
 
   return names;
 };

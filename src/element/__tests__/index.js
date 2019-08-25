@@ -1,12 +1,13 @@
-import Element from '../element';
+import Element from '../index';
 
 describe('Element class tested', () => {
-  afterEach(() => {
-    document.body.innerHTML = '';
+  beforeAll(() => {
+    document.body.innerHTML = `
+      <a href="#" class="link">Link</a>
+    `;
   });
 
   test('Should be an instance of HTMLElement', () => {
-    document.body.innerHTML = '<a href="#" class="link">Link</a>';
     const element = new Element('.link');
     expect(element.raw).toBeInstanceOf(HTMLElement);
   });
@@ -17,7 +18,7 @@ describe('Element class tested', () => {
   });
 
   test('Should throw an error, selector not found', () => {
-    const element = () => new Element('.link');
+    const element = () => new Element('.linked');
     expect(element).toThrowErrorMatchingSnapshot();
   });
 });
