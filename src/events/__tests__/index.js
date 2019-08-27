@@ -33,7 +33,7 @@ describe('Events class tested', () => {
     events.on('click focus', mockEventFunction);
     element.raw.click();
     element.raw.focus();
-    expect(mockEventFunction.mock.calls.length).toBe(2);
+    expect(mockEventFunction).toHaveBeenCalledTimes(2);
   });
 
   test('Should remove 2 events, click and focus', () => {
@@ -71,7 +71,7 @@ describe('Events class tested', () => {
     events.once('click', mockEventFunction);
     element.raw.click();
     element.raw.click();
-    expect(mockEventFunction.mock.calls.length).toBe(1);
+    expect(mockEventFunction).toHaveBeenCalledTimes(1);
   });
 
   test('Should throw an error, dom event not found', () => {
