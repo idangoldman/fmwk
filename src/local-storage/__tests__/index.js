@@ -24,7 +24,9 @@ describe('LocalStorage class tested: general functionality', () => {
 // locals.update(key, value);
 // locals.filter((key, value) => condition);
 // locals.filter(key, object);
-// // ['all', 'change', 'set', 'get', 'remove', 'clear', 'filter', 'push']
+// locals.sort((key, value) => condition);
+// locals.sort(key, object);
+// // ['all', 'change', 'set', 'get', 'remove', 'clear', 'filter', 'sort']
 // locals.on(event, [key,] callback);
 //
 //

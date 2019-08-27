@@ -1,12 +1,12 @@
 import { component } from 'feature';
 
 // {
-//   element,
-//   events,
-//   local,
+//   element, -
+//   events, -
+//   local, -
+//   router,
 //   session,
 //   cookie,
-//   router,
 //   rest,
 //   pubsub,
 //   render

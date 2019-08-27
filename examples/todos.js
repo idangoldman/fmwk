@@ -1,6 +1,6 @@
-import { select, locals } from 'feature';
+import { component, locals } from 'feature';
 
-select('.todos', ({ pubsub, locals, render }) => {
+component('.todos', ({ pubsub, locals, render }) => {
 
   // locals initial with the selector as name connection.
   // locals.defaults([]);
