@@ -78,5 +78,4 @@ describe('Events class tested', () => {
     const eventNotFound = () => events.once('clicked', mockEventFunction);
     expect(eventNotFound).toThrowErrorMatchingSnapshot();
   });
-
 });
