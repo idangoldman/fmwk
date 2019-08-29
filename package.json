@@ -14,6 +14,9 @@
     "lint": "./node_modules/.bin/eslint src/**.js",
     "build": "./node_modules/.bin/parcel build index.html"
   },
+  "moduleRoots": [
+    "src/"
+  ],
   "author": "Idan Goldman",
   "license": "MIT",
   "devDependencies": {

@@ -1,26 +1,16 @@
+import eventNamesValidation from '/helpers/event-names-validation';
+
 const EVENTS_STORE = new Map();
-const EVENTS_LIST = new Set([
+const EVENTS_LIST = [
   'blur', 'change', 'click', 'contextmenu', 'dblclick', 'focus', 'focusin',
   'focusout', 'keydown', 'keypress', 'keyup', 'mousedown', 'mouseenter',
   'mouseleave', 'mousemove', 'mouseout', 'mouseover', 'mouseup', 'resize',
   'scroll', 'select', 'submit', 'reset'
-]);
-
-const validateEventNames = (name) => {
-  let names = name.split(' ');
-
-  names.every(validName => {
-    if (!EVENTS_LIST.has(validName)) {
-      throw new Error(`- No DOM event was found with '${validName}' name.`);
-    }
-  });
-
-  return names;
-};
+];
 
 export const insert = (selector = '', eventNames = [], callback = undefined) => {
   const events = EVENTS_STORE.get(selector) || new Map();
-  const names = validateEventNames(eventNames);
+  const names = eventNamesValidation(eventNames, EVENTS_LIST);
   const output = [];
 
   names.forEach((name) => {
@@ -51,7 +41,7 @@ export const remove = (selector = '', eventNames = [], callback = undefined) => 
 
   if (events) {
     if (eventNames.length) {
-      const names = validateEventNames(eventNames);
+      const names = eventNamesValidation(eventNames, EVENTS_LIST);
 
       names.forEach((name) => {
         if (events.has(name)) {
