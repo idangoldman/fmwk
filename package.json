@@ -4,8 +4,9 @@
   "description": "helps us write better",
   "main": "index.js",
   "engines": {
-    "node": "10.16.0"
+    "node": "12.9.0"
   },
+  "type": "module",
   "scripts": {
     "test": "./node_modules/.bin/jest",
     "test_watch": "./node_modules/.bin/jest --watchAll",
