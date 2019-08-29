@@ -1,5 +1,5 @@
-import eventNamesValidation from './event-names-validation.js';
-import findBranch from './find-branch';
+import eventNamesValidation from '/helpers/event-names-validation.js';
+import findBranch from '/helpers/find-branch';
 
 export default class Transmitter {
   constructor(eventNames = []) {

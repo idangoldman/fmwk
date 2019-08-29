@@ -1,4 +1,4 @@
-import Transmitter from '../transmitter';
+import Transmitter from '/helpers/transmitter';
 
 describe('Transmitter class tested', () => {
   let transmitter, mockEventFunction;

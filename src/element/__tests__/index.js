@@ -1,4 +1,4 @@
-import Element from '../index';
+import Element from '/element';
 
 describe('Element class tested', () => {
   beforeAll(() => {

@@ -1,4 +1,4 @@
-import Transmitter from '../helpers/transmitter';
+import Transmitter from '/helpers/transmitter';
 
 const LOCALSTORAGE_EVENTS_LIST = [
   'all', [

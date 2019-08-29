@@ -1,4 +1,4 @@
-import { insert, remove } from './store';
+import { insert, remove } from '/events/store';
 
 export default class Events {
   constructor(element) {

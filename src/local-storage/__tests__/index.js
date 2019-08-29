@@ -1,4 +1,4 @@
-import LocalStorage from '../index';
+import LocalStorage from '/local-storage';
 
 describe('LocalStorage class tested: general functionality', () => {
   let locals;
