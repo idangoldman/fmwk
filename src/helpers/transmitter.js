@@ -1,5 +1,5 @@
 import eventNamesValidation from './event-names-validation.js';
-import findTreeBranch from './find-tree-branch';
+import findBranch from './find-branch';
 
 export default class Transmitter {
   constructor(eventNames = []) {
@@ -31,7 +31,7 @@ export default class Transmitter {
 
   emit(eventNames) {
     // eventNamesValidation(eventNames, this.EVENTS_LIST).forEach((eventName) =>
-    //   findTreeBranch(eventName, this.EVENTS_LIST).forEach((newstuff) => {
+    //   findBranch(eventName, this.EVENTS_LIST).forEach((newstuff) => {
     //     console.log(newstuff);
     //   })
     // );

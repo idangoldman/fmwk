@@ -1,11 +1,11 @@
-const findTreeBranch = (eventName = '', eventsList = []) => {
+const findBranch = (eventName = '', eventsList = []) => {
   return [].concat(eventsList).reduce((accumulator, currentValue, currentIndex, array) => {
     if (Array.isArray(currentValue)) {
       if (currentValue.includes(eventName)) {
         accumulator = accumulator.concat(eventName);
       } else {
         accumulator = accumulator.concat(
-          findTreeBranch(currentValue, eventName)
+          findBranch(currentValue, eventName)
         );
       }
       array.splice(1);
@@ -20,4 +20,4 @@ const findTreeBranch = (eventName = '', eventsList = []) => {
   }, []).reverse();
 }
 
-export default findTreeBranch;
+export default findBranch;
