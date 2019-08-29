@@ -1,7 +1,7 @@
 export default class Transmitter {
   constructor(eventNames = []) {
     this.STORE = new Map();
-    this.EVENT_LIST = new Set(eventNames);
+    this.EVENT_LIST = [].concat(eventNames);
   }
 
   on() {
@@ -43,7 +43,7 @@ export default class Transmitter {
     return output;
   }
 
-  remove(key = '', eventNames = [], callback = undefined) {
+  drop(key = '', eventNames = [], callback = undefined) {
     const events = this.STORE.get(key);
     const output = [];
 
@@ -94,11 +94,34 @@ export default class Transmitter {
     let names = eventName.split(' ');
 
     names.every(name => {
-      if (!this.EVENT_LIST.has(name)) {
+      if (!this.findEventPath(this.EVENT_LIST, name).includes(name)) {
         throw new Error(`- No event was found with '${name}' name.`);
       }
     });
 
     return names;
+  }
+
+  findEventPath(eventsList, eventName) {
+    return [].concat(eventsList).reduce((accumulator, currentValue, currentIndex, array) => {
+
+      if (Array.isArray(currentValue)) {
+        if (currentValue.includes(eventName)) {
+          accumulator = accumulator.concat(eventName);
+        } else {
+          accumulator = accumulator.concat(
+            this.findEventPath(currentValue, eventName)
+          );
+        }
+        array.splice(1);
+      } else if (array.includes(eventName)) {
+        accumulator = accumulator.concat(eventName);
+        array.splice(1);
+      } else {
+        accumulator = accumulator.concat(currentValue);
+      }
+
+      return accumulator;
+    }, []).reverse();
   }
 }
