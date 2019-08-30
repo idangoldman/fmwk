@@ -1,24 +1,33 @@
 {
-  "name": "Feature",
+  "name": "feature",
+  "title": "Feature",
+  "description": "Yet another javascript framework, helps us write better.",
   "version": "0.0.1",
-  "description": "helps us write better",
-  "main": "index.js",
+  "author": "Idan Goldman",
+  "license": "MIT",
+  "main": "./src/index.js",
+  "homepage": "https://github.com/idangoldman/feature",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/idangoldman/feature.git"
+  },
+  "bugs": {
+    "url": "https://github.com/idangoldman/feature/issues"
+  },
+  "type": "module",
+  "moduleRoots": [
+    "src/"
+  ],
   "engines": {
     "node": "12.9.0"
   },
-  "type": "module",
   "scripts": {
-    "test": "./node_modules/.bin/jest",
-    "test_watch": "./node_modules/.bin/jest --watchAll",
+    "test": "./node_modules/.bin/jest --config ./jest.config.json",
+    "test_watch": "./node_modules/.bin/jest --watchAll --config ./jest.config.json",
     "start": "./node_modules/.bin/parcel public/index.html --no-cache",
     "lint": "./node_modules/.bin/eslint src/**.js",
     "build": "./node_modules/.bin/parcel build index.html"
   },
-  "moduleRoots": [
-    "src/"
-  ],
-  "author": "Idan Goldman",
-  "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
@@ -29,9 +38,10 @@
     "eslint": "^6.2.2",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jest": "^22.15.2",
+    "eslint-plugin-jest": "^22.16.0",
     "jest": "^24.9.0",
     "jest-runner-eslint": "^0.7.4",
+    "jsdoc": "^3.6.3",
     "npm-check-updates": "^3.1.21",
     "parcel-bundler": "^1.12.3",
     "parcel-plugin-eslint": "^1.0.7"
