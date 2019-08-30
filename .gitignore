@@ -1,8 +1,9 @@
-node_modules
-dist
 .cache
 .DS_Store
+coverage
+dist
 DS_Store
+node_modules
 package-lock.json
-yarn-error.log
 test.js
+yarn-error.log

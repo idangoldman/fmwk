@@ -2,5 +2,11 @@
   "verbose": true,
   "moduleNameMapper": {
     "^\/(.*)$": "<rootDir>/src/$1"
-  }
+  },
+  "collectCoverageFrom": [
+    "<rootDir>/src/**/*.js"
+  ],
+  "coveragePathIgnorePatterns": [
+    "/node_modules/"
+  ]
 }

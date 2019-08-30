@@ -20,9 +20,16 @@
   ],
   "scripts": {
     "test": "./node_modules/.bin/jest --config ./jest.config.json",
-    "test:watch": "./node_modules/.bin/jest --watchAll --config ./jest.config.json"
+    "test:watch": "./node_modules/.bin/jest --watchAll --config ./jest.config.json",
+    "test:coverage": "./node_modules/.bin/jest --coverage --config ./jest.config.json",
+    "test:coverage:web": "open coverage/lcov-report/index.html"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-flow-strip-types": "^7.4.4",
+    "@babel/plugin-transform-modules-commonjs": "^7.5.0",
+    "@babel/preset-env": "^7.5.5",
+    "babel-jest": "^24.9.0",
     "jest": "^24.9.0"
   }
 }
