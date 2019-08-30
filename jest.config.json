@@ -1,11 +1,10 @@
 {
-  "verbose": true,
   "projects": [
     {
+      "displayName": "tests",
       "moduleNameMapper": {
         "^\/(.*)$": "<rootDir>/src/$1"
       },
-      "displayName": "tests",
       "collectCoverageFrom": [
         "<rootDir>/src/**/*.js"
       ],

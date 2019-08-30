@@ -13,8 +13,14 @@
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "warn",
     "jest/valid-expect": "error",
+    "import/no-absolute-path": false,
     "no-extend-native": 0,
     "no-useless-escape": 0
   },
-  "plugins": ["jest"]
+  "plugins": ["jest"],
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
+  }
 }
