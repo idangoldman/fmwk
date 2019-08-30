@@ -1,6 +1,6 @@
 const eventNamesValidation = (eventName = '', eventsList = []) => {
-  let names = eventName.split(' ');
-  let list = eventsList.flat(Infinity);
+  const names = eventName.split(' ');
+  const list = eventsList.flat(Infinity);
 
   names.every(name => {
     if (!list.includes(name)) {
@@ -9,6 +9,6 @@ const eventNamesValidation = (eventName = '', eventsList = []) => {
   });
 
   return names;
-}
+};
 
 export default eventNamesValidation;

@@ -1,5 +1,5 @@
 import eventNamesValidation from '/helpers/event-names-validation.js';
-import findBranch from '/helpers/find-branch';
+// import findBranch from '/helpers/find-branch';
 
 export default class Transmitter {
   constructor(eventNames = []) {
@@ -9,7 +9,7 @@ export default class Transmitter {
 
   on(eventNames, callback, once = false) {
     eventNamesValidation(eventNames, this.EVENTS_LIST).forEach((eventName) => {
-      let callbacks = this.EVENTS_STORE.get(eventName) || new Set();
+      const callbacks = this.EVENTS_STORE.get(eventName) || new Set();
 
       if (!callbacks.has(callback)) {
         if (once) {
@@ -36,10 +36,10 @@ export default class Transmitter {
     //   })
     // );
     eventNamesValidation(eventNames, this.EVENTS_LIST).forEach((eventName) => {
-      let callbacks = this.EVENTS_STORE.get(eventName);
+      const callbacks = this.EVENTS_STORE.get(eventName);
 
       if (callbacks && callbacks.size) {
-        for (let callback of callbacks) {
+        for (const callback of callbacks) {
           callback();
         }
       }
@@ -47,12 +47,12 @@ export default class Transmitter {
   }
 
   remove(eventNames, callback) {
-    eventNamesValidation(eventNames, this.EVENTS_LIST).forEach((eventName) =>{
-      let callbacks = this.EVENTS_STORE.get(eventName);
+    eventNamesValidation(eventNames, this.EVENTS_LIST).forEach((eventName) => {
+      const callbacks = this.EVENTS_STORE.get(eventName);
 
       if (callbacks && callbacks.has(callback)) {
         callbacks.delete(callback);
       }
-    })
+    });
   }
 }

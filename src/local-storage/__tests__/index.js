@@ -12,11 +12,10 @@ describe('LocalStorage class tested: general functionality', () => {
     locals.prefix = 'stored-';
     locals.set('foo', 'bar');
 
-    let result = JSON.parse(window.localStorage.getItem('stored-foo'));
+    const result = JSON.parse(window.localStorage.getItem('stored-foo'));
 
     expect(result).toBe('bar');
   });
-
 });
 
 // locals.create(key);

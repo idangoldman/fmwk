@@ -7,7 +7,7 @@ describe('Transmitter class tested', () => {
       ['change', ['remove', 'set', 'clear', 'empty']],
       'get'
     ]
-  ]
+  ];
 
   beforeEach(() => {
     transmitter = new Transmitter(EVENTS_LIST);
@@ -18,21 +18,21 @@ describe('Transmitter class tested', () => {
     transmitter.on('all', mockEventFunction);
     transmitter.emit('all');
 
-    expect(mockEventFunction).toBeCalled();
+    expect(mockEventFunction).toHaveBeenCalled();
   });
 
   test('Should be able to listen on low level event', () => {
     transmitter.on('get', mockEventFunction);
     transmitter.emit('get');
 
-    expect(mockEventFunction).toBeCalled();
+    expect(mockEventFunction).toHaveBeenCalled();
   });
 
   test('Should be able to listen on middle event', () => {
     transmitter.on('change', mockEventFunction);
     transmitter.emit('set');
 
-    expect(mockEventFunction).toBeCalled();
+    expect(mockEventFunction).toHaveBeenCalled();
   });
 
   test('Should be able to listen on chain of events', () => {

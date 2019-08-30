@@ -19,8 +19,8 @@ describe('LocalStorage class tested: base functionality', () => {
     locals.set('foo', '123');
     locals.set('items', { foo: 'bar' });
 
-    let result1 = locals.get('foo');
-    let result2 = locals.get('items');
+    const result1 = locals.get('foo');
+    const result2 = locals.get('items');
 
     expect(result1).toBe('123');
     expect(result2).toEqual({ foo: 'bar' });
@@ -39,5 +39,4 @@ describe('LocalStorage class tested: base functionality', () => {
     locals.clear();
     expect(window.localStorage).toHaveLength(0);
   });
-
 });

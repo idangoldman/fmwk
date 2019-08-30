@@ -18,6 +18,6 @@ const findBranch = (eventName = '', eventsList = []) => {
 
     return accumulator;
   }, []).reverse();
-}
+};
 
 export default findBranch;

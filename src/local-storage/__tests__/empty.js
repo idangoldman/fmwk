@@ -21,7 +21,7 @@ describe('LocalStorage class tested: empty functionality', () => {
   });
 
   test('Should be able to empty out an object', () => {
-    locals.set('emptyObject', { 'foo': 'bar' });
+    locals.set('emptyObject', { foo: 'bar' });
     locals.empty('emptyObject');
     expect(locals.get('emptyObject')).toEqual({});
   });

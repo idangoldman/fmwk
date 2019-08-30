@@ -12,7 +12,7 @@ describe('LocalStorage class tested: listeners functionality', () => {
   test('Should be listening on a set event', () => {
     locals.on('set', mockEventFunction);
     locals.set('foo', 'bar');
-    expect(mockEventFunction).toBeCalled();
+    expect(mockEventFunction).toHaveBeenCalled();
   });
 
   test('Should be listening on a set event specific key', () => {
@@ -25,7 +25,7 @@ describe('LocalStorage class tested: listeners functionality', () => {
   test('Should be listening on a get event', () => {
     locals.on('get', mockEventFunction);
     locals.get('bar');
-    expect(mockEventFunction).toBeCalled();
+    expect(mockEventFunction).toHaveBeenCalled();
   });
 
   test('Should be listening on a get event specific key', () => {

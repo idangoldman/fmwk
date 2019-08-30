@@ -18,8 +18,9 @@ export default class LocalStorage extends Transmitter {
       window.localStorage.getItem(this.prefix + key)
     );
   }
+
   get(key) {
-    let value = this._get(...arguments);
+    const value = this._get(...arguments);
 
     this.emit('get', [key, value]);
     return value;
@@ -30,15 +31,16 @@ export default class LocalStorage extends Transmitter {
       this.prefix + key, JSON.stringify(value)
     );
   }
+
   set(key, value) {
-    let result = this._set(...arguments);
+    const result = this._set(...arguments);
 
     this.emit('set', [key, value]);
     return result;
   }
 
   remove(key) {
-    let result = window.localStorage.removeItem(this.prefix + key);
+    const result = window.localStorage.removeItem(this.prefix + key);
 
     this.emit('remove', [key, result]);
     return result;
@@ -50,7 +52,7 @@ export default class LocalStorage extends Transmitter {
   }
 
   empty(key) {
-    let oldValue = this._get(key);
+    const oldValue = this._get(key);
     let newValue;
 
     if (typeof oldValue === 'string') {
