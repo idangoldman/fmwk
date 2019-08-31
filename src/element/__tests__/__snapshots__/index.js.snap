@@ -1,5 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Element class tested Should throw an error, no selectors were passed 1`] = `"- No HTML selectors were passed."`;
+exports[`Element class tested Should throw an error, no selectors were passed 1`] = `"- No query selector passed."`;
 
 exports[`Element class tested Should throw an error, selector not found 1`] = `"- No HTML element was found with '.linked' selector."`;

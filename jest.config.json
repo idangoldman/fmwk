@@ -18,6 +18,9 @@
       "testMatch": [
         "<rootDir>/src/**/*.js"
       ],
+      "testPathIgnorePatterns": [
+        "/jsdoc/"
+      ],
       "watchPlugins": [
         "jest-runner-eslint/watch-fix"
       ]

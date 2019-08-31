@@ -2,8 +2,11 @@
   "opts": {
     "template": "templates/default",
     "encoding": "utf8",
-    "destination": "./docs/"
+    "destination": "./docs/",
+    "recurse": true,
+    "access": "all"
   },
+  "recurseDepth": 10,
   "sourceType": "module",
   "source": {
     "include": ["./src"],
