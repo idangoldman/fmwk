@@ -2,6 +2,7 @@
 .DS_Store
 coverage
 dist
+docs
 DS_Store
 node_modules
 package-lock.json

@@ -22,7 +22,9 @@
     "test": "./node_modules/.bin/jest --config ./jest.config.json",
     "test:watch": "./node_modules/.bin/jest --watchAll --config ./jest.config.json",
     "test:coverage": "./node_modules/.bin/jest --coverage --config ./jest.config.json",
-    "test:coverage:web": "open coverage/lcov-report/index.html"
+    "test:coverage:open": "open coverage/lcov-report/index.html",
+    "jsdoc": "./node_modules/.bin/jsdoc --configure jsdoc.json",
+    "jsdoc:open": "open docs/index.html"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
@@ -40,6 +42,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "jest": "^24.9.0",
-    "jest-runner-eslint": "^0.7.4"
+    "jest-runner-eslint": "^0.7.4",
+    "jsdoc": "^3.6.3"
   }
 }

@@ -14,6 +14,14 @@ task "test:coverage" do
   exec("yarn test:coverage")
 end
 
-task "test:coverage:web" do
-  exec("yarn test:coverage:web")
+task "test:coverage:open" do
+  exec("yarn test:coverage:open")
+end
+
+task "jsdoc" do
+  exec("yarn jsdoc")
+end
+
+task "jsdoc:open" do
+  exec("yarn jsdoc:open")
 end
