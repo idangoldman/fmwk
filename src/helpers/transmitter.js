@@ -1,10 +1,10 @@
-import eventNamesValidation from '/helpers/event-names-validation.js';
+import eventNamesValidation from '/helpers/event-names-validation';
 // import findBranch from '/helpers/find-branch';
 
 export default class Transmitter {
-  constructor(eventNames = []) {
+  constructor(eventsList = []) {
     this.EVENTS_STORE = new Map();
-    this.EVENTS_LIST = [].concat(eventNames);
+    this.EVENTS_LIST = [].concat(eventsList);
   }
 
   on(eventNames, callback, once = false) {
