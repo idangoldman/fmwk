@@ -16,7 +16,7 @@ describe('Transmitter class tested', () => {
     expect(mockEventFunction).toHaveBeenCalled();
   });
 
-  test('Should listen on middle event', () => {
+  test('Should listen on a middle event', () => {
     transmitter.on('change', mockEventFunction);
     transmitter.emit('set');
 
@@ -31,7 +31,7 @@ describe('Transmitter class tested', () => {
     expect(mockEventFunction).toHaveBeenCalledTimes(2);
   });
 
-  test('Should pass data array with arguments on emit', () => {
+  test('Should emit data array with arguments', () => {
     const songData = ['songName', 'The Crew'];
 
     transmitter.on('get', mockEventFunction);
