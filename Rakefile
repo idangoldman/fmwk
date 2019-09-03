@@ -18,6 +18,10 @@ task "test:coverage:open" do
   exec("yarn test:coverage:open")
 end
 
+task "test:update:snapshot" do
+  exec("yarn test:update:snapshot")
+end
+
 task "jsdoc" do
   exec("yarn jsdoc")
 end

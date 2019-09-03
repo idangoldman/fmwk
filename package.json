@@ -20,9 +20,10 @@
   ],
   "scripts": {
     "test": "./node_modules/.bin/jest --config ./jest.config.json",
-    "test:watch": "./node_modules/.bin/jest --watchAll --config ./jest.config.json",
-    "test:coverage": "./node_modules/.bin/jest --coverage --config ./jest.config.json",
+    "test:watch": "./node_modules/.bin/jest --config ./jest.config.json --watchAll",
+    "test:coverage": "./node_modules/.bin/jest --config ./jest.config.json --coverage",
     "test:coverage:open": "open coverage/lcov-report/index.html",
+    "test:update:snapshot": "./node_modules/.bin/jest --config ./jest.config.json --updateSnapshot",
     "jsdoc": "./node_modules/.bin/jsdoc --configure jsdoc.json",
     "jsdoc:open": "open docs/index.html"
   },
