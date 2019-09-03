@@ -8,14 +8,14 @@ describe('LocalStorage class: base functionality', () => {
     window.localStorage.clear();
   });
 
-  test('Should be able to set values in store', () => {
+  test('Should set values in store', () => {
     locals.set('foo', '123');
     locals.set('items', { foo: 'bar' });
 
     expect(window.localStorage).toHaveLength(2);
   });
 
-  test('Should be able to get values from store', () => {
+  test('Should get values from store', () => {
     locals.set('foo', '123');
     locals.set('items', { foo: 'bar' });
 
@@ -26,14 +26,14 @@ describe('LocalStorage class: base functionality', () => {
     expect(result2).toEqual({ foo: 'bar' });
   });
 
-  test('Should be able to remove item from storage', () => {
+  test('Should remove item from storage', () => {
     locals.set('foo', '123');
     locals.set('bar', '321');
     locals.remove('foo');
     expect(window.localStorage).toHaveLength(1);
   });
 
-  test('Should be able to clear store', () => {
+  test('Should clear store', () => {
     locals.set('foo', '123');
     locals.set('bar', '321');
     locals.clear();

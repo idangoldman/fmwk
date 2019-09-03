@@ -8,19 +8,19 @@ describe('LocalStorage class: empty functionality', () => {
     window.localStorage.clear();
   });
 
-  test('Should be able to empty out a string', () => {
+  test('Should empty out a string', () => {
     locals.set('emptyString', 'bar');
     locals.empty('emptyString');
     expect(locals.get('emptyString')).toBe('');
   });
 
-  test('Should be able to empty out an array', () => {
+  test('Should empty out an array', () => {
     locals.set('emptyArray', [1, 2, 3]);
     locals.empty('emptyArray');
     expect(locals.get('emptyArray')).toEqual([]);
   });
 
-  test('Should be able to empty out an object', () => {
+  test('Should empty out an object', () => {
     locals.set('emptyObject', { foo: 'bar' });
     locals.empty('emptyObject');
     expect(locals.get('emptyObject')).toEqual({});

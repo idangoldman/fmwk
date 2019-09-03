@@ -8,7 +8,7 @@ describe('LocalStorage class: general functionality', () => {
     window.localStorage.clear();
   });
 
-  test('Should be able to set a prefix for stored keys', () => {
+  test('Should set a prefix for stored keys', () => {
     locals.prefix = 'stored-';
     locals.set('foo', 'bar');
 

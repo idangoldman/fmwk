@@ -9,21 +9,21 @@ describe('Transmitter class tested', () => {
     mockEventFunction = jest.fn();
   });
 
-  test('Should be able to emit and listen to event', () => {
+  test('Should emit and listen to event', () => {
     transmitter.on('get', mockEventFunction);
     transmitter.emit('get');
 
     expect(mockEventFunction).toHaveBeenCalled();
   });
 
-  test('Should be able to listen on middle event', () => {
+  test('Should listen on middle event', () => {
     transmitter.on('change', mockEventFunction);
     transmitter.emit('set');
 
     expect(mockEventFunction).toHaveBeenCalled();
   });
 
-  test('Should be able to listen on chain of events', () => {
+  test('Should listen on chain of events', () => {
     transmitter.on('set', mockEventFunction);
     transmitter.on('change', mockEventFunction);
     transmitter.emit('set');
@@ -31,7 +31,7 @@ describe('Transmitter class tested', () => {
     expect(mockEventFunction).toHaveBeenCalledTimes(2);
   });
 
-  test('Should be able to pass data array with arguments on emit', () => {
+  test('Should pass data array with arguments on emit', () => {
     const songData = ['songName', 'The Crew'];
 
     transmitter.on('get', mockEventFunction);
@@ -40,7 +40,7 @@ describe('Transmitter class tested', () => {
     expect(mockEventFunction).toHaveBeenCalledWith(...songData);
   });
 
-  test('Should be able to call mock function once with arguments', () => {
+  test('Should call mock function once with arguments', () => {
     const songData = ['songName', 'The Crew'];
 
     transmitter.once('get', mockEventFunction);

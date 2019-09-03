@@ -16,7 +16,7 @@ describe('eventNamesValidation helper function tested', () => {
     expect(eventNamesValidation(eventName, DOM_EVENTS_LIST)).toEqual(match);
   });
 
-  test('Should not be able validate event names', () => {
+  test('Should not validate event names', () => {
     const eventName = 'clicked';
     const callback = () => eventNamesValidation(eventName, DOM_EVENTS_LIST);
 

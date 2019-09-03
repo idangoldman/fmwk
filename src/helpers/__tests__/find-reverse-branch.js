@@ -12,13 +12,13 @@ describe('findReverseBranch helper function tested', () => {
     ];
   });
 
-  test('Should be able to return a leaf inside a branch', () => {
+  test('Should return a leaf inside a branch', () => {
     const leaf = 'leaf_2_1';
 
     expect(findReverseBranch(leaf, tree)).toEqual(['leaf_2_1', 'branch_2']);
   });
 
-  test('Should be able to return a leaf without a branch', () => {
+  test('Should return a leaf without a branch', () => {
     const leaf = 'leaf_0_1';
 
     expect(findReverseBranch(leaf, tree)).toEqual(['leaf_0_1']);
