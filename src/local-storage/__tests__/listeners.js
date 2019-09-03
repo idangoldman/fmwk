@@ -1,6 +1,6 @@
 import LocalStorage from '/local-storage';
 
-describe('LocalStorage class tested: listeners functionality', () => {
+describe('LocalStorage class: listeners functionality', () => {
   let locals, mockEventFunction;
 
   beforeEach(() => {

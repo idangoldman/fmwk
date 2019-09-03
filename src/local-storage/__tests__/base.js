@@ -1,6 +1,6 @@
 import LocalStorage from '/local-storage';
 
-describe('LocalStorage class tested: base functionality', () => {
+describe('LocalStorage class: base functionality', () => {
   let locals;
 
   beforeEach(() => {
