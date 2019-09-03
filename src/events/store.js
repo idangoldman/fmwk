@@ -1,16 +1,11 @@
 import eventNamesValidation from '/helpers/event-names-validation';
+import { DOM_EVENTS_LIST } from '/common/constants';
 
 const EVENTS_STORE = new Map();
-const EVENTS_LIST = [
-  'blur', 'change', 'click', 'contextmenu', 'dblclick', 'focus', 'focusin',
-  'focusout', 'keydown', 'keypress', 'keyup', 'mousedown', 'mouseenter',
-  'mouseleave', 'mousemove', 'mouseout', 'mouseover', 'mouseup', 'resize',
-  'scroll', 'select', 'submit', 'reset'
-];
 
 export const insert = (selector = '', eventNames = [], callback = undefined) => {
   const events = EVENTS_STORE.get(selector) || new Map();
-  const names = eventNamesValidation(eventNames, EVENTS_LIST);
+  const names = eventNamesValidation(eventNames, DOM_EVENTS_LIST);
   const output = [];
 
   names.forEach((name) => {
@@ -41,7 +36,7 @@ export const remove = (selector = '', eventNames = [], callback = undefined) => 
 
   if (events) {
     if (eventNames.length) {
-      const names = eventNamesValidation(eventNames, EVENTS_LIST);
+      const names = eventNamesValidation(eventNames, DOM_EVENTS_LIST);
 
       names.forEach((name) => {
         if (events.has(name)) {

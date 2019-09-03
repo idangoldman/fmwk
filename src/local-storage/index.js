@@ -1,11 +1,5 @@
 import Transmitter from '/helpers/transmitter';
-
-const LOCALSTORAGE_EVENTS_LIST = [
-  'all', [
-    ['change', ['remove', 'set', 'clear', 'empty']],
-    'get'
-  ]
-];
+import { LOCALSTORAGE_EVENTS_LIST } from '/helpers/constants';
 
 export default class LocalStorage extends Transmitter {
   constructor(prefix = 'store-') {
