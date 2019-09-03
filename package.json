@@ -24,8 +24,8 @@
     "test:coverage": "./node_modules/.bin/jest --config ./jest.config.json --coverage",
     "test:coverage:open": "open coverage/lcov-report/index.html",
     "test:update:snapshot": "./node_modules/.bin/jest --config ./jest.config.json --updateSnapshot",
-    "jsdoc": "./node_modules/.bin/jsdoc --configure jsdoc.json",
-    "jsdoc:open": "open docs/index.html"
+    "docs": "./node_modules/.bin/jsdoc --configure jsdoc.json",
+    "docs:open": "open docs/index.html"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",

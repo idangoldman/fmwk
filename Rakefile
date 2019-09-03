@@ -22,10 +22,10 @@ task "test:update:snapshot" do
   exec("yarn test:update:snapshot")
 end
 
-task "jsdoc" do
-  exec("yarn jsdoc")
+task "docs" do
+  exec("yarn docs")
 end
 
-task "jsdoc:open" do
-  exec("yarn jsdoc:open")
+task "docs:open" do
+  exec("yarn docs:open")
 end
