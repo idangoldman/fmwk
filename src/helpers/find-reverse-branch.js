@@ -30,7 +30,6 @@ const findReverseBranch = (leaf = '', tree = []) => {
       const [currentBranch, leafs] = branch;
 
       if (currentBranch === leaf) {
-        console.log('currentBranch');
         newBranch.push(leaf);
       } else if (leafs.includes(leaf)) {
         newBranch.push(currentBranch, leaf);

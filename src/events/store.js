@@ -40,18 +40,18 @@ export const remove = (selector = '', eventNames = [], callback = undefined) => 
 
       for (const validEventName of validEventNames) {
         if (events.has(validEventName)) {
-          const event = events.get(validEventName);
+          const callbacks = events.get(validEventName);
 
           if (!callback) {
-            event.forEach(value => output.push([validEventName, value]));
-            event.clear();
-          } else if (event.has(callback)) {
+            callbacks.forEach(value => output.push([validEventName, value]));
+            callbacks.clear();
+          } else if (callbacks.has(callback)) {
             output.push([validEventName, callback]);
-            event.delete(callback);
+            callbacks.delete(callback);
           }
 
-          if (event.size) {
-            events.set(validEventName, event);
+          if (callbacks.size) {
+            events.set(validEventName, callbacks);
           } else {
             events.delete(validEventName);
           }

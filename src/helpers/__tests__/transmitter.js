@@ -51,7 +51,7 @@ describe('Transmitter class tested', () => {
     expect(mockEventFunction).toHaveBeenCalledWith(...songData);
   });
 
-  test('Should call mock function once with a specific data key', () => {
+  test('Should call mock function one time with a specific data key', () => {
     transmitter.on('get', 'todo', mockEventFunction);
     transmitter.emit('get', 'todo');
     transmitter.emit('get');
