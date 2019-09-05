@@ -2,7 +2,7 @@
   "name": "feature",
   "title": "Feature",
   "description": "Yet another javascript framework, helps us write better.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Idan Goldman",
   "license": "MIT",
   "main": "./src/index.js",
