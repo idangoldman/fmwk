@@ -16,7 +16,7 @@ export default class LocalStorage extends Transmitter {
   get(key) {
     const value = this._get(...arguments);
 
-    this.emit('get', [key, value]);
+    this.emit('get', key, [key, value]);
     return value;
   }
 
@@ -29,14 +29,13 @@ export default class LocalStorage extends Transmitter {
   set(key, value) {
     const result = this._set(...arguments);
 
-    this.emit('set', [key, value]);
+    this.emit('set', key, [key, value]);
     return result;
   }
 
   remove(key) {
     const result = window.localStorage.removeItem(this.prefix + key);
-
-    this.emit('remove', [key, result]);
+    this.emit('remove', key, [key, result]);
     return result;
   }
 
@@ -58,7 +57,7 @@ export default class LocalStorage extends Transmitter {
     }
 
     if (newValue !== oldValue) {
-      this.emit('empty', [key, newValue]);
+      this.emit('empty', key, [key, newValue]);
       return this._set(key, newValue);
     }
   }
