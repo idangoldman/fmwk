@@ -7,30 +7,35 @@ export default class Transmitter {
     this.EVENTS_LIST = [].concat(eventsList);
   }
 
-  on(eventNames, dataKey, callback, once = false) {
+  on(eventNames, dataKey, callback, once) {
     if (typeof dataKey === 'function') {
-      callback = dataKey;
-      dataKey = undefined;
+      [dataKey, callback] = [undefined, dataKey];
     }
 
-    const validEventNames = eventNamesValidation(eventNames, this.EVENTS_LIST);
+    const validEventNames = this._validateEventNames(eventNames);
 
-    for (const eventName of validEventNames) {
-      const callbacks = this.EVENTS_STORE.get(eventName) || new Set();
-
-      if (!callbacks.has(callback)) {
-        if (once) {
-          const callbackOnce = (...args) => {
-            callback(...args);
-            this.remove(eventNames, callbackOnce);
-          };
-          callbacks.add(callbackOnce);
-        } else {
-          callbacks.add(callback);
-        }
-
-        this.EVENTS_STORE.set(eventName, callbacks);
+    for (let eventName of validEventNames) {
+      if (dataKey) {
+        eventName = `${eventName}_${dataKey}`;
       }
+
+      this._insert(eventName, callback, once);
+    }
+  }
+
+  off(eventNames, dataKey, callback) {
+    if (typeof dataKey === 'function') {
+      [dataKey, callback] = [undefined, dataKey];
+    }
+
+    const validEventNames = this._validateEventNames(eventNames);
+
+    for (let eventName of validEventNames) {
+      if (dataKey) {
+        eventName = `${eventName}_${dataKey}`;
+      }
+
+      this._remove(eventName, callback);
     }
   }
 
@@ -39,13 +44,17 @@ export default class Transmitter {
   }
 
   emit(eventName, dataKey, data) {
-    if (arguments.length === 2) {
-      data = dataKey;
-      dataKey = undefined;
+    if (typeof dataKey !== 'string') {
+      [dataKey, data] = [undefined, dataKey];
     }
 
-    const validEventNames = eventNamesValidation(eventName, this.EVENTS_LIST);
-    const eventsList = findReverseBranch(validEventNames.pop(), this.EVENTS_LIST);
+    this._validateEventNames(eventName);
+
+    const eventsList = findReverseBranch(eventName, this.EVENTS_LIST);
+
+    if (dataKey) {
+      eventsList.unshift(`${eventName}_${dataKey}`);
+    }
 
     for (const storedEvents of eventsList) {
       const callbacks = this.EVENTS_STORE.get(storedEvents);
@@ -62,21 +71,34 @@ export default class Transmitter {
     }
   }
 
-  remove(eventNames, keyData, callback) {
-    if (arguments.length === 2) {
-      callback = keyData;
-      keyData = undefined;
-    }
+  _validateEventNames(eventNames) {
+    return eventNamesValidation(eventNames, this.EVENTS_LIST);
+  }
 
-    const validEventNames = eventNamesValidation(eventNames, this.EVENTS_LIST);
+  _insert(eventName, callback, once) {
+    const callbacks = this.EVENTS_STORE.get(eventName) || new Set();
 
-    for (const eventName of validEventNames) {
-      const callbacks = this.EVENTS_STORE.get(eventName);
-
-      if (callbacks && callbacks.has(callback)) {
-        callbacks.delete(callback);
-        this.EVENTS_STORE.set(eventName, callbacks);
+    if (!callbacks.has(callback)) {
+      if (once) {
+        const callbackOnce = (...args) => {
+          callback(...args);
+          this._remove(eventName, callbackOnce);
+        };
+        callbacks.add(callbackOnce);
+      } else {
+        callbacks.add(callback);
       }
+
+      this.EVENTS_STORE.set(eventName, callbacks);
+    }
+  }
+
+  _remove(eventName, callback) {
+    const callbacks = this.EVENTS_STORE.get(eventName);
+
+    if (callbacks && callbacks.has(callback)) {
+      callbacks.delete(callback);
+      this.EVENTS_STORE.set(eventName, callbacks);
     }
   }
 }
