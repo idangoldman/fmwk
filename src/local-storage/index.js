@@ -1,11 +1,5 @@
 import Transmitter from '/helpers/transmitter';
-
-const LOCALSTORAGE_EVENTS_LIST = [
-  'all', [
-    ['change', ['remove', 'set', 'clear', 'empty']],
-    'get'
-  ]
-];
+import { LOCALSTORAGE_EVENTS_LIST } from '/helpers/constants';
 
 export default class LocalStorage extends Transmitter {
   constructor(prefix = 'store-') {
@@ -18,10 +12,11 @@ export default class LocalStorage extends Transmitter {
       window.localStorage.getItem(this.prefix + key)
     );
   }
-  get(key) {
-    let value = this._get(...arguments);
 
-    this.emit('get', [key, value]);
+  get(key) {
+    const value = this._get(...arguments);
+
+    this.emit('get', key, [key, value]);
     return value;
   }
 
@@ -30,17 +25,17 @@ export default class LocalStorage extends Transmitter {
       this.prefix + key, JSON.stringify(value)
     );
   }
-  set(key, value) {
-    let result = this._set(...arguments);
 
-    this.emit('set', [key, value]);
+  set(key, value) {
+    const result = this._set(...arguments);
+
+    this.emit('set', key, [key, value]);
     return result;
   }
 
   remove(key) {
-    let result = window.localStorage.removeItem(this.prefix + key);
-
-    this.emit('remove', [key, result]);
+    const result = window.localStorage.removeItem(this.prefix + key);
+    this.emit('remove', key, [key, result]);
     return result;
   }
 
@@ -50,7 +45,7 @@ export default class LocalStorage extends Transmitter {
   }
 
   empty(key) {
-    let oldValue = this._get(key);
+    const oldValue = this._get(key);
     let newValue;
 
     if (typeof oldValue === 'string') {
@@ -62,7 +57,7 @@ export default class LocalStorage extends Transmitter {
     }
 
     if (newValue !== oldValue) {
-      this.emit('empty', [key, newValue]);
+      this.emit('empty', key, [key, newValue]);
       return this._set(key, newValue);
     }
   }

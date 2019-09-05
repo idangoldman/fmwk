@@ -19,14 +19,14 @@ describe('Events class tested', () => {
   test('Should trigger a click event', () => {
     events.on('click', mockEventFunction);
     element.raw.click();
-    expect(mockEventFunction).toBeCalled();
+    expect(mockEventFunction).toHaveBeenCalled();
   });
 
   test('Should remove a click event', () => {
     events.on('click', mockEventFunction);
     events.off('click', mockEventFunction);
     element.raw.click();
-    expect(mockEventFunction).not.toBeCalled();
+    expect(mockEventFunction).not.toHaveBeenCalled();
   });
 
   test('Should trigger 2 events, click and focus', () => {
@@ -41,14 +41,14 @@ describe('Events class tested', () => {
     events.off('click focus', mockEventFunction);
     element.raw.click();
     element.raw.focus();
-    expect(mockEventFunction).not.toBeCalled();
+    expect(mockEventFunction).not.toHaveBeenCalled();
   });
 
   test('Should remove event without specifying a callback', () => {
     events.on('click', mockEventFunction);
     events.off('click');
     element.raw.click();
-    expect(mockEventFunction).not.toBeCalled();
+    expect(mockEventFunction).not.toHaveBeenCalled();
   });
 
   test('Should remove 2 events without specifying a callback', () => {
@@ -56,7 +56,7 @@ describe('Events class tested', () => {
     events.off('click focus');
     element.raw.click();
     element.raw.focus();
-    expect(mockEventFunction).not.toBeCalled();
+    expect(mockEventFunction).not.toHaveBeenCalled();
   });
 
   test('Should remove event without specifying a type or callback', () => {
@@ -64,7 +64,7 @@ describe('Events class tested', () => {
     events.off();
     element.raw.click();
     element.raw.focus();
-    expect(mockEventFunction).not.toBeCalled();
+    expect(mockEventFunction).not.toHaveBeenCalled();
   });
 
   test('Should call click event only once', () => {

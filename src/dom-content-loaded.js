@@ -26,5 +26,4 @@ const onDOMContentLoaded = () => {
   };
 };
 
-
 export default onDOMContentLoaded();

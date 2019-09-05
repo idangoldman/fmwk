@@ -3,6 +3,9 @@
   "ignore": ["builtins"],
   "plugins": [
     "@babel/plugin-transform-flow-strip-types",
-    "@babel/plugin-transform-modules-commonjs"
+    "@babel/plugin-transform-modules-commonjs",
+    ["module-resolver", {
+      "root": ["./src"]
+    }]
   ]
 }

@@ -1,6 +1,6 @@
 import LocalStorage from '/local-storage';
 
-describe('LocalStorage class tested: general functionality', () => {
+describe('LocalStorage class: general functionality', () => {
   let locals;
 
   beforeEach(() => {
@@ -8,15 +8,14 @@ describe('LocalStorage class tested: general functionality', () => {
     window.localStorage.clear();
   });
 
-  test('Should be able to set a prefix for stored keys', () => {
+  test('Should set a prefix for stored keys', () => {
     locals.prefix = 'stored-';
     locals.set('foo', 'bar');
 
-    let result = JSON.parse(window.localStorage.getItem('stored-foo'));
+    const result = JSON.parse(window.localStorage.getItem('stored-foo'));
 
     expect(result).toBe('bar');
   });
-
 });
 
 // locals.create(key);
@@ -26,8 +25,6 @@ describe('LocalStorage class tested: general functionality', () => {
 // locals.filter(key, object);
 // locals.sort((key, value) => condition);
 // locals.sort(key, object);
-// // ['all', 'change', 'set', 'get', 'remove', 'clear', 'filter', 'sort']
-// locals.on(event, [key,] callback);
 //
 //
 // locals.insert('todos', {

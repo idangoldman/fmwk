@@ -2,7 +2,7 @@
   "name": "feature",
   "title": "Feature",
   "description": "Yet another javascript framework, helps us write better.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Idan Goldman",
   "license": "MIT",
   "main": "./src/index.js",
@@ -18,37 +18,32 @@
   "moduleRoots": [
     "src/"
   ],
-  "engines": {
-    "node": "12.9.0"
-  },
   "scripts": {
     "test": "./node_modules/.bin/jest --config ./jest.config.json",
-    "test_watch": "./node_modules/.bin/jest --watchAll --config ./jest.config.json",
-    "start": "./node_modules/.bin/parcel public/index.html --no-cache",
-    "lint": "./node_modules/.bin/eslint src/**.js",
-    "build": "./node_modules/.bin/parcel build index.html"
+    "test:watch": "./node_modules/.bin/jest --config ./jest.config.json --watchAll",
+    "test:coverage": "./node_modules/.bin/jest --config ./jest.config.json --coverage",
+    "test:coverage:open": "open coverage/lcov-report/index.html",
+    "test:update:snapshot": "./node_modules/.bin/jest --config ./jest.config.json --updateSnapshot",
+    "docs": "./node_modules/.bin/jsdoc --configure jsdoc.json",
+    "docs:open": "open docs/index.html"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/plugin-transform-flow-strip-types": "^7.4.4",
     "@babel/plugin-transform-modules-commonjs": "^7.5.0",
     "@babel/preset-env": "^7.5.5",
     "babel-jest": "^24.9.0",
-    "eslint": "^6.2.2",
-    "eslint-config-airbnb-base": "^14.0.0",
+    "babel-plugin-module-resolver": "^3.2.0",
+    "eslint": "^6.3.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-import-resolver-babel-module": "^5.1.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jest": "^22.16.0",
+    "eslint-plugin-node": "^9.2.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "jest": "^24.9.0",
     "jest-runner-eslint": "^0.7.4",
-    "jsdoc": "^3.6.3",
-    "npm-check-updates": "^3.1.21",
-    "parcel-bundler": "^1.12.3",
-    "parcel-plugin-eslint": "^1.0.7"
-  },
-  "dependencies": {
-    "handlebars": "^4.1.2",
-    "jquery": "^3.4.1",
-    "todomvc-app-css": "^2.2.0"
+    "jsdoc": "^3.6.3"
   }
 }

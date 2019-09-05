@@ -1,60 +1,133 @@
 import Transmitter from '/helpers/transmitter';
+import { LOCALSTORAGE_EVENTS_LIST } from '/helpers/constants';
 
 describe('Transmitter class tested', () => {
   let transmitter, mockEventFunction;
-  const EVENTS_LIST = [
-    'all', [
-      ['change', ['remove', 'set', 'clear', 'empty']],
-      'get'
-    ]
-  ]
 
   beforeEach(() => {
-    transmitter = new Transmitter(EVENTS_LIST);
+    transmitter = new Transmitter(LOCALSTORAGE_EVENTS_LIST);
     mockEventFunction = jest.fn();
   });
 
-  test('Should be able to emit and listen on event', () => {
-    transmitter.on('all', mockEventFunction);
-    transmitter.emit('all');
-
-    expect(mockEventFunction).toBeCalled();
-  });
-
-  test('Should be able to listen on low level event', () => {
+  test('Should emit and listen to event', () => {
     transmitter.on('get', mockEventFunction);
     transmitter.emit('get');
 
-    expect(mockEventFunction).toBeCalled();
+    expect(mockEventFunction).toHaveBeenCalled();
   });
 
-  test('Should be able to listen on middle event', () => {
+  test('Should listen on a middle event', () => {
     transmitter.on('change', mockEventFunction);
     transmitter.emit('set');
 
-    expect(mockEventFunction).toBeCalled();
+    expect(mockEventFunction).toHaveBeenCalled();
   });
 
-  test('Should be able to listen on chain of events', () => {
+  test('Should listen on chain of events', () => {
     transmitter.on('set', mockEventFunction);
     transmitter.on('change', mockEventFunction);
-    transmitter.on('all', mockEventFunction);
     transmitter.emit('set');
 
-    expect(mockEventFunction).toHaveBeenCalledTimes(3);
+    expect(mockEventFunction).toHaveBeenCalledTimes(2);
+  });
+
+  test('Should emit data array with arguments', () => {
+    const songData = ['songName', 'The Crew'];
+
+    transmitter.on('get', mockEventFunction);
+    transmitter.emit('get', songData);
+
+    expect(mockEventFunction).toHaveBeenCalledWith(...songData);
+  });
+
+  test('Should call mock function once with arguments', () => {
+    const songData = ['songName', 'The Crew'];
+
+    transmitter.once('get', mockEventFunction);
+    transmitter.emit('get', songData);
+    transmitter.emit('get', songData);
+
+    expect(mockEventFunction).toHaveBeenCalledTimes(1);
+    expect(mockEventFunction).toHaveBeenCalledWith(...songData);
+  });
+
+  test('Should call mock function one time with a specific data key', () => {
+    transmitter.on('get', 'todo', mockEventFunction);
+    transmitter.emit('get', 'todo');
+    transmitter.emit('get');
+
+    expect(mockEventFunction).toHaveBeenCalledTimes(1);
+  });
+
+  test('Should call mock function on event name and specific data key', () => {
+    transmitter.on('get', 'todo', mockEventFunction);
+    transmitter.on('get', mockEventFunction);
+    transmitter.emit('get', 'todo');
+
+    expect(mockEventFunction).toHaveBeenCalledTimes(2);
+  });
+
+  test('Should call mock function once on data key with arguments', () => {
+    const songData = ['songName', 'The Crew'];
+
+    transmitter.on('get', 'todo', mockEventFunction);
+    transmitter.emit('get', 'todo', songData);
+
+    expect(mockEventFunction).toHaveBeenCalledTimes(1);
+    expect(mockEventFunction).toHaveBeenCalledWith(...songData);
+  });
+
+  test('Should call mock function once with data key and data', () => {
+    const songData = ['songName', 'The Crew'];
+
+    transmitter.once('get', 'song', mockEventFunction);
+    transmitter.emit('get', 'song', songData);
+    transmitter.emit('get', 'song', songData);
+
+    expect(mockEventFunction).toHaveBeenCalledTimes(1);
+    expect(mockEventFunction).toHaveBeenCalledWith(...songData);
+  });
+
+  test('Should call off a mock callback of event name', () => {
+    transmitter.on('set', mockEventFunction);
+    transmitter.off('set', mockEventFunction);
+    transmitter.emit('set');
+
+    expect(mockEventFunction).not.toHaveBeenCalled();
+  });
+
+  test('Should call off a mock callback of event name with data key', () => {
+    transmitter.on('set', 'todo', mockEventFunction);
+    transmitter.off('set', 'todo', mockEventFunction);
+    transmitter.emit('set', 'todo');
+
+    expect(mockEventFunction).not.toHaveBeenCalled();
+  });
+
+  test('Should call off all callbacks from event name', () => {
+    transmitter.on('set', mockEventFunction);
+    transmitter.on('set', mockEventFunction);
+    transmitter.off('set');
+    transmitter.emit('set');
+
+    expect(mockEventFunction).not.toHaveBeenCalled();
+  });
+
+  test('Should call off all callbacks fron event name with data key', () => {
+    transmitter.on('set', 'todo', mockEventFunction);
+    transmitter.on('set', 'todo', mockEventFunction);
+    transmitter.off('set', 'todo');
+    transmitter.emit('set', 'todo');
+
+    expect(mockEventFunction).not.toHaveBeenCalled();
+  });
+
+  test('Should call off all callbacks', () => {
+    transmitter.on('set', mockEventFunction);
+    transmitter.on('set', mockEventFunction);
+    transmitter.off();
+    transmitter.emit('set', 'todo');
+
+    expect(mockEventFunction).not.toHaveBeenCalled();
   });
 });
-// locals.on(event, [key,] callback);
-// const LOCALSTORAGE_EVENTS_LIST = [
-//   'all', [['change', ['remove', 'set', 'clear', 'empty']],'get']
-// ];
-//
-// let radio = new Transmitter(
-//   LOCALSTORAGE_EVENTS_LIST
-// );
-//
-//
-// const sayHello = () => console.log('Hello, this is RADIO?');
-//
-// radio.on('set', sayHello);
-// radio.remove('set', sayHello);
