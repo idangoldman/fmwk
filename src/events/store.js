@@ -5,23 +5,23 @@ const EVENTS_STORE = new Map();
 
 export const insert = (selector = '', eventNames = [], callback = undefined) => {
   const events = EVENTS_STORE.get(selector) || new Map();
-  const names = eventNamesValidation(eventNames, DOM_EVENTS_LIST);
+  const validEventNames = eventNamesValidation(eventNames, DOM_EVENTS_LIST);
   const output = [];
 
-  names.forEach((name) => {
-    if (events.size && events.has(name)) {
-      const event = events.get(name);
+  for (const validEventName of validEventNames) {
+    if (events.size && events.has(validEventName)) {
+      const event = events.get(validEventName);
 
       if (!event.has(callback)) {
         event.add(callback);
-        events.set(name, event);
+        events.set(validEventName, event);
       }
     } else {
-      events.set(name, new Set([callback]));
+      events.set(validEventName, new Set([callback]));
     }
 
-    output.push([name, callback]);
-  });
+    output.push([validEventName, callback]);
+  }
 
   if (events.size) {
     EVENTS_STORE.set(selector, events);
@@ -36,33 +36,33 @@ export const remove = (selector = '', eventNames = [], callback = undefined) => 
 
   if (events) {
     if (eventNames.length) {
-      const names = eventNamesValidation(eventNames, DOM_EVENTS_LIST);
+      const validEventNames = eventNamesValidation(eventNames, DOM_EVENTS_LIST);
 
-      names.forEach((name) => {
-        if (events.has(name)) {
-          const event = events.get(name);
+      for (const validEventName of validEventNames) {
+        if (events.has(validEventName)) {
+          const event = events.get(validEventName);
 
           if (!callback) {
-            event.forEach(value => output.push([name, value]));
+            event.forEach(value => output.push([validEventName, value]));
             event.clear();
           } else if (event.has(callback)) {
-            output.push([name, callback]);
+            output.push([validEventName, callback]);
             event.delete(callback);
           }
 
           if (event.size) {
-            events.set(name, event);
+            events.set(validEventName, event);
           } else {
-            events.delete(name);
+            events.delete(validEventName);
           }
         }
-      });
+      }
     } else {
-      events.forEach((callbacks, event) => {
-        callbacks.forEach((_callback) => {
-          output.push([event, _callback]);
-        });
-      });
+      for (const [eventName, callbacks] of events) {
+        for (const _callback of callbacks) {
+          output.push([eventName, _callback]);
+        }
+      }
 
       events.clear();
     }

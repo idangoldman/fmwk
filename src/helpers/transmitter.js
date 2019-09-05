@@ -34,11 +34,11 @@ export default class Transmitter {
   }
 
   emit(eventName, data) {
-    const validEventName = eventNamesValidation(eventName, this.EVENTS_LIST).pop();
-    const eventsList = findReverseBranch(validEventName, this.EVENTS_LIST);
+    const validEventNames = eventNamesValidation(eventName, this.EVENTS_LIST);
+    const eventsList = findReverseBranch(validEventNames.pop(), this.EVENTS_LIST);
 
-    for (const storeEvent of eventsList) {
-      const callbacks = this.EVENTS_STORE.get(storeEvent);
+    for (const storedEvents of eventsList) {
+      const callbacks = this.EVENTS_STORE.get(storedEvents);
 
       if (callbacks && callbacks.size) {
         for (const callback of callbacks) {
