@@ -7,7 +7,12 @@ export default class Transmitter {
     this.EVENTS_LIST = [].concat(eventsList);
   }
 
-  on(eventNames, callback, once = false) {
+  on(eventNames, dataKey, callback, once = false) {
+    if (typeof dataKey === 'function') {
+      callback = dataKey;
+      dataKey = undefined;
+    }
+
     const validEventNames = eventNamesValidation(eventNames, this.EVENTS_LIST);
 
     for (const eventName of validEventNames) {
@@ -29,11 +34,16 @@ export default class Transmitter {
     }
   }
 
-  once(eventNames, callback) {
-    this.on(eventNames, callback, true);
+  once(eventNames, dataKey, callback) {
+    this.on(eventNames, dataKey, callback, true);
   }
 
-  emit(eventName, data) {
+  emit(eventName, dataKey, data) {
+    if (arguments.length === 2) {
+      data = dataKey;
+      dataKey = undefined;
+    }
+
     const validEventNames = eventNamesValidation(eventName, this.EVENTS_LIST);
     const eventsList = findReverseBranch(validEventNames.pop(), this.EVENTS_LIST);
 
@@ -52,7 +62,12 @@ export default class Transmitter {
     }
   }
 
-  remove(eventNames, callback) {
+  remove(eventNames, keyData, callback) {
+    if (arguments.length === 2) {
+      callback = keyData;
+      keyData = undefined;
+    }
+
     const validEventNames = eventNamesValidation(eventNames, this.EVENTS_LIST);
 
     for (const eventName of validEventNames) {
