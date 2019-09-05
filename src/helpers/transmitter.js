@@ -28,14 +28,18 @@ export default class Transmitter {
       [dataKey, callback] = [undefined, dataKey];
     }
 
-    const validEventNames = this._validateEventNames(eventNames);
+    if (eventNames) {
+      const validEventNames = this._validateEventNames(eventNames);
 
-    for (let eventName of validEventNames) {
-      if (dataKey) {
-        eventName = `${eventName}_${dataKey}`;
+      for (let eventName of validEventNames) {
+        if (dataKey) {
+          eventName = `${eventName}_${dataKey}`;
+        }
+
+        this._remove(eventName, callback);
       }
-
-      this._remove(eventName, callback);
+    } else {
+      this._remove();
     }
   }
 
@@ -94,11 +98,17 @@ export default class Transmitter {
   }
 
   _remove(eventName, callback) {
-    const callbacks = this.EVENTS_STORE.get(eventName);
+    if (eventName && callback) {
+      const callbacks = this.EVENTS_STORE.get(eventName);
 
-    if (callbacks && callbacks.has(callback)) {
-      callbacks.delete(callback);
-      this.EVENTS_STORE.set(eventName, callbacks);
+      if (callbacks && callbacks.has(callback)) {
+        callbacks.delete(callback);
+        this.EVENTS_STORE.set(eventName, callbacks);
+      }
+    } else if (!eventName) {
+      this.EVENTS_STORE.clear();
+    } else if (!callback) {
+      this.EVENTS_STORE.set(eventName, new Set());
     }
   }
 }
