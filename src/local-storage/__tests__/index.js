@@ -25,8 +25,6 @@ describe('LocalStorage class: general functionality', () => {
 // locals.filter(key, object);
 // locals.sort((key, value) => condition);
 // locals.sort(key, object);
-// // ['all', 'change', 'set', 'get', 'remove', 'clear', 'filter', 'sort']
-// locals.on(event, [key,] callback);
 //
 //
 // locals.insert('todos', {
