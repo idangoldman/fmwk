@@ -39,7 +39,7 @@ Want to make sense of this repo, here are the commands that will help you with t
   yarn docs:wiki  # Generates markdown file inside the docs folder.
 ```
 
-This section is still partially done, any help will be much appreciated. `Docs/` folder is not yet part of this repo because most of the code is not documented and the theme is weirdly confusing. The only documentation available at the moment is the markdown version as a [Wiki page](../../wiki/Overview).
+This section is still partially done, any help will be much appreciated. `Docs/` folder is not yet part of this repo because most of the code is not documented and the theme is weirdly confusing. The only documentation available at the moment is the markdown version as a [Wiki page](../../wiki/).
 
 ## Configuration files
 I thought it would be helpful to show a list of most used libraries in this project and link to their configuration file.
