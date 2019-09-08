@@ -26,7 +26,7 @@
     "test:update:snapshot": "./node_modules/.bin/jest --config ./jest.config.json --updateSnapshot",
     "docs": "./node_modules/.bin/jsdoc --configure jsdoc.json",
     "docs:open": "open docs/index.html",
-    "docs:wiki": "./node_modules/.bin/jsdoc2md ./src/**/*.js --configure ./jsdoc.json > ./docs/index.md"
+    "docs:wiki": "DIR='docs'; mkdir $DIR; ./node_modules/.bin/jsdoc2md ./src/**/*.js --configure ./jsdoc.json > $DIR/index.md"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
