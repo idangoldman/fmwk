@@ -2,7 +2,7 @@
   "name": "feature",
   "title": "Feature",
   "description": "Opinionated javascript framework, built with jQuery and Rails in mind.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Idan Goldman",
   "license": "MIT",
   "main": "./src/index.js",
