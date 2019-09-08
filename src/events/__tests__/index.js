@@ -79,3 +79,5 @@ describe('Events class tested', () => {
     expect(eventNotFound).toThrowErrorMatchingSnapshot();
   });
 });
+
+// events.on('keypress:esc', callback);

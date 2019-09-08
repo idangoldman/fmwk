@@ -1,8 +1,8 @@
 {
   "name": "feature",
   "title": "Feature",
-  "description": "Yet another javascript framework, helps us write better.",
-  "version": "0.0.2",
+  "description": "Opinionated javascript framework, built with jQuery and Rails in mind.",
+  "version": "0.0.3",
   "author": "Idan Goldman",
   "license": "MIT",
   "main": "./src/index.js",
@@ -25,7 +25,8 @@
     "test:coverage:open": "open coverage/lcov-report/index.html",
     "test:update:snapshot": "./node_modules/.bin/jest --config ./jest.config.json --updateSnapshot",
     "docs": "./node_modules/.bin/jsdoc --configure jsdoc.json",
-    "docs:open": "open docs/index.html"
+    "docs:open": "open docs/index.html",
+    "docs:wiki": "DIR='docs'; mkdir $DIR; ./node_modules/.bin/jsdoc2md ./src/**/*.js --configure ./jsdoc.json > $DIR/index.md"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
@@ -44,6 +45,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "jest": "^24.9.0",
     "jest-runner-eslint": "^0.7.4",
-    "jsdoc": "^3.6.3"
+    "jsdoc": "^3.6.3",
+    "jsdoc-to-markdown": "^5.0.1"
   }
 }

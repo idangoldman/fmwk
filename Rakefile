@@ -29,3 +29,7 @@ end
 task "docs:open" do
   exec("yarn docs:open")
 end
+
+task "docs:wiki" do
+  exec("yarn docs:wiki")
+end

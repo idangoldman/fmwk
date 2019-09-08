@@ -18,6 +18,7 @@ describe('LocalStorage class: general functionality', () => {
   });
 });
 
+// locals.has(key);
 // locals.create(key);
 // locals.insert(key, value);
 // locals.update(key, value);
@@ -25,7 +26,7 @@ describe('LocalStorage class: general functionality', () => {
 // locals.filter(key, object);
 // locals.sort((key, value) => condition);
 // locals.sort(key, object);
-//
+// ['create', 'has', 'insert', 'update', 'filter', 'sort']
 //
 // locals.insert('todos', {
 //   id: uuid(),
