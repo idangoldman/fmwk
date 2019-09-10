@@ -1,6 +1,6 @@
 import Storage from '/storage';
 
-describe('LocalStorage class: listeners functionality', () => {
+describe('Storage class: listeners functionality', () => {
   let store, windowStore, type, mockEventFunction;
 
   beforeAll(() => {

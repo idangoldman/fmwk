@@ -1,6 +1,6 @@
 import Storage from '/storage';
 
-describe('LocalStorage class: base functionality', () => {
+describe('Storage class: base functionality', () => {
   let store, windowStore, type;
 
   beforeAll(() => {
