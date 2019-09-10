@@ -1,15 +1,16 @@
 import Transmitter from '/helpers/transmitter';
-import { LOCALSTORAGE_EVENTS_LIST } from '/helpers/constants';
+import { STORAGE_EVENTS_LIST } from '/helpers/constants';
 
-export default class LocalStorage extends Transmitter {
-  constructor(prefix = 'store-') {
-    super(LOCALSTORAGE_EVENTS_LIST);
+export default class Storage extends Transmitter {
+  constructor(type = 'local', prefix = 'store-') {
+    super(STORAGE_EVENTS_LIST);
     this.prefix = prefix;
+    this.store = window[type + 'Storage'];
   }
 
   _get(key) {
     return JSON.parse(
-      window.localStorage.getItem(this.prefix + key)
+      this.store.getItem(this.prefix + key)
     );
   }
 
@@ -21,7 +22,7 @@ export default class LocalStorage extends Transmitter {
   }
 
   _set(key, value) {
-    return window.localStorage.setItem(
+    return this.store.setItem(
       this.prefix + key, JSON.stringify(value)
     );
   }
@@ -34,14 +35,14 @@ export default class LocalStorage extends Transmitter {
   }
 
   remove(key) {
-    const result = window.localStorage.removeItem(this.prefix + key);
+    const result = this.store.removeItem(this.prefix + key);
     this.emit('remove', key, [key, result]);
     return result;
   }
 
   clear() {
     this.emit('clear');
-    return window.localStorage.clear();
+    return this.store.clear();
   }
 
   empty(key) {
