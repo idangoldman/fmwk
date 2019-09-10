@@ -1,11 +1,11 @@
 import Transmitter from '/helpers/transmitter';
-import { LOCALSTORAGE_EVENTS_LIST } from '/helpers/constants';
+import { STORAGE_EVENTS_LIST } from '/helpers/constants';
 
 describe('Transmitter class tested', () => {
   let transmitter, mockEventFunction;
 
   beforeEach(() => {
-    transmitter = new Transmitter(LOCALSTORAGE_EVENTS_LIST);
+    transmitter = new Transmitter(STORAGE_EVENTS_LIST);
     mockEventFunction = jest.fn();
   });
 
