@@ -1,42 +1,42 @@
-import LocalStorage from '/local-storage';
+import LocalStorage from '/storage/local';
 
 describe('LocalStorage class: base functionality', () => {
-  let locals;
+  let local;
 
   beforeEach(() => {
-    locals = new LocalStorage();
+    local = new LocalStorage();
     window.localStorage.clear();
   });
 
   test('Should set values in store', () => {
-    locals.set('foo', '123');
-    locals.set('items', { foo: 'bar' });
+    local.set('foo', '123');
+    local.set('items', { foo: 'bar' });
 
     expect(window.localStorage).toHaveLength(2);
   });
 
   test('Should get values from store', () => {
-    locals.set('foo', '123');
-    locals.set('items', { foo: 'bar' });
+    local.set('foo', '123');
+    local.set('items', { foo: 'bar' });
 
-    const result1 = locals.get('foo');
-    const result2 = locals.get('items');
+    const result1 = local.get('foo');
+    const result2 = local.get('items');
 
     expect(result1).toBe('123');
     expect(result2).toEqual({ foo: 'bar' });
   });
 
   test('Should remove item from storage', () => {
-    locals.set('foo', '123');
-    locals.set('bar', '321');
-    locals.remove('foo');
+    local.set('foo', '123');
+    local.set('bar', '321');
+    local.remove('foo');
     expect(window.localStorage).toHaveLength(1);
   });
 
   test('Should clear store', () => {
-    locals.set('foo', '123');
-    locals.set('bar', '321');
-    locals.clear();
+    local.set('foo', '123');
+    local.set('bar', '321');
+    local.clear();
     expect(window.localStorage).toHaveLength(0);
   });
 });

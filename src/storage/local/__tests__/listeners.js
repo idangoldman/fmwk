@@ -1,72 +1,69 @@
-import LocalStorage from '/local-storage';
+import LocalStorage from '/storage/local';
 
 describe('LocalStorage class: listeners functionality', () => {
-  let locals, mockEventFunction;
+  let local, mockEventFunction;
 
   beforeEach(() => {
-    locals = new LocalStorage();
+    local = new LocalStorage();
     window.localStorage.clear();
     mockEventFunction = jest.fn();
   });
 
   test('Should listen on a set event', () => {
-    locals.on('set', mockEventFunction);
-    locals.set('foo', 'bar');
+    local.on('set', mockEventFunction);
+    local.set('foo', 'bar');
     expect(mockEventFunction).toHaveBeenCalled();
   });
 
   test('Should listen on a set event specific key', () => {
-    locals.on('set', 'foo', mockEventFunction);
-    locals.set('bar', 'foo');
-    locals.set('foo', 'bar');
+    local.on('set', 'foo', mockEventFunction);
+    local.set('bar', 'foo');
+    local.set('foo', 'bar');
     expect(mockEventFunction).toHaveBeenCalledTimes(1);
   });
 
   test('Should listen on a get event', () => {
-    locals.on('get', mockEventFunction);
-    locals.get('bar');
+    local.on('get', mockEventFunction);
+    local.get('bar');
     expect(mockEventFunction).toHaveBeenCalled();
   });
 
   test('Should listen on a get event specific key', () => {
-    locals.on('get', 'foo', mockEventFunction);
-    locals.get('bar');
-    locals.get('foo');
+    local.on('get', 'foo', mockEventFunction);
+    local.get('bar');
+    local.get('foo');
     expect(mockEventFunction).toHaveBeenCalledTimes(1);
   });
 
   test('Should listen on a remove event', () => {
-    locals.on('remove', mockEventFunction);
-    locals.remove('foo');
+    local.on('remove', mockEventFunction);
+    local.remove('foo');
     expect(mockEventFunction).toHaveBeenCalledTimes(1);
   });
 
   test('Should listen on a remove event specific key', () => {
-    locals.on('remove', 'foo', mockEventFunction);
-    locals.remove('bar');
-    locals.remove('foo');
+    local.on('remove', 'foo', mockEventFunction);
+    local.remove('bar');
+    local.remove('foo');
     expect(mockEventFunction).toHaveBeenCalledTimes(1);
   });
 
   test('Should listen on a clear event', () => {
-    locals.on('clear', mockEventFunction);
-    locals.clear();
+    local.on('clear', mockEventFunction);
+    local.clear();
     expect(mockEventFunction).toHaveBeenCalledTimes(1);
   });
 
   test('Should listen on a empty event', () => {
-    locals.on('empty', mockEventFunction);
-    locals.empty('foo');
+    local.on('empty', mockEventFunction);
+    local.empty('foo');
     expect(mockEventFunction).toHaveBeenCalledTimes(1);
   });
 
   test('Should listen on a empty event specific key', () => {
-    locals.on('empty', 'foo', mockEventFunction);
-    locals.empty('bar');
-    locals.empty('foo');
+    local.on('empty', 'foo', mockEventFunction);
+    local.empty('bar');
+    local.empty('foo');
     expect(mockEventFunction).toHaveBeenCalledTimes(1);
   });
 });
-
-// [all, change, set, get, remove, clear, empty]
-// locals.on(event, [key,] callback);

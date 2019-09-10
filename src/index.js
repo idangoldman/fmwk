@@ -1,15 +1,15 @@
 import Element from '/element';
 import Events from '/events';
-import LocalStorage from '/local-storage';
+import LocalStorage from '/storage/local';
 import onDOMContentLoaded from '/dom-content-loaded';
 
 const component = (selector, callback) => {
   onDOMContentLoaded(() => {
     const element = new Element(selector);
     const events = new Events(element);
-    const locals = new LocalStorage();
+    const local = new LocalStorage();
 
-    callback({ element, events, locals });
+    callback({ element, events, local });
   });
 };
 
