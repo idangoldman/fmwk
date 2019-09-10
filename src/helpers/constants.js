@@ -11,3 +11,7 @@ export const STORAGE_EVENTS_LIST = [
   ['change', ['remove', 'set', 'clear', 'empty']],
   'get'
 ];
+
+export const STORAGE_TYPES_LIST = [
+  'local', 'session', 'cookie'
+];
