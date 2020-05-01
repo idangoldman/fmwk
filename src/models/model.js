@@ -5,6 +5,7 @@ export default class Modal {
 
   read() {}
   save() {}
+  update() {}
   remove() {}
   save_to() {
     // session, local, cookie, remote
