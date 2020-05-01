@@ -9,7 +9,7 @@ describe('Element class tested', () => {
 
   test('Should be an instance of HTMLElement', () => {
     const element = new Element('.link');
-    expect(element.raw).toBeInstanceOf(HTMLElement);
+    expect(element.instance).toBeInstanceOf(HTMLElement);
   });
 
   test('Should throw an error, no selectors were passed', () => {

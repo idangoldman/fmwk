@@ -14,7 +14,7 @@ class Element {
      * @member {HTMLElement}
      * @private
      */
-    this.element = undefined;
+    this.instance = undefined;
 
     /**
      * An instance of the query selector string.
@@ -26,20 +26,12 @@ class Element {
     if (!selector.length) {
       throw new Error('- No query selector passed.');
     } else {
-      this.element = document.querySelector(selector);
+      this.instance = document.querySelector(selector);
 
-      if (this.element === null) {
+      if (this.instance === null) {
         throw new Error(`- No HTML element was found with '${selector}' selector.`);
       }
     }
-  }
-
-  /**
-   * Get the instance of DOM element.
-   * @returns {HTMLElement}
-   */
-  get raw() {
-    return this.element;
   }
 
   /**
