@@ -1,0 +1,14 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "search.exclude": {
+      "coverage": true,
+      "docs": true,
+      "node_modules": true
+    }
+  }
+}
