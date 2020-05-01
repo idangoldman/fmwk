@@ -1,5 +1,5 @@
-import eventNamesValidation from '/helpers/event-names-validation';
-import { DOM_EVENTS_LIST } from '/helpers/constants';
+import eventNamesValidation from 'helpers/event-names-validation';
+import { DOM_EVENTS_LIST } from 'helpers/constants';
 
 describe('eventNamesValidation helper function tested', () => {
   test('Should be able validate event name', () => {

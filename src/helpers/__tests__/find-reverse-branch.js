@@ -1,4 +1,4 @@
-import findReverseBranch from '/helpers/find-reverse-branch';
+import findReverseBranch from 'helpers/find-reverse-branch';
 
 describe('findReverseBranch helper function tested', () => {
   let tree;

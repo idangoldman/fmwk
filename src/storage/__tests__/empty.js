@@ -1,4 +1,4 @@
-import Storage from '/storage';
+import Storage from 'storage';
 
 describe('Storage class: empty functionality', () => {
   let store, windowStore, type;
