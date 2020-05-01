@@ -1,19 +1,7 @@
 {
   "projects": [
     {
-      "displayName": "tests",
-      "moduleNameMapper": {
-        "^\/(.*)$": "<rootDir>/src/$1"
-      },
-      "collectCoverageFrom": [
-        "<rootDir>/src/**/*.js"
-      ],
-      "coveragePathIgnorePatterns": [
-        "/node_modules/"
-      ]
-    },
-    {
-      "displayName": "eslint",
+      "displayName": "ESLint",
       "runner": "jest-runner-eslint",
       "testMatch": [
         "<rootDir>/src/**/*.js"
