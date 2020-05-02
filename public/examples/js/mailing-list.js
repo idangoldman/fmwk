@@ -34,18 +34,16 @@ models.create('form#mailing-list', {
   to_params: ''
 });
 
-component('form#mailing-list', '/mailchimp-newsletter', ({ element, events }) => {
-  events.on('submit', { preventDefault: true }, (event, model) => {
-    // model.post();
-    // model.save_to('local', 'session', 'cookie');
-    // console.log(model.to_json);
-    // console.log(model.to_params);
+component('form#mailing-list', '/mailchimp-newsletter', ({ element, events, models }) => {
+  models.save_to('session');
 
-    if (model.is_valid()) {
+  events.on('submit', { preventDefault: true }, (event, model) => {
+    if (model.is_valid) {
       model
-        .save_to('session')
-        .update();
-      // model.update();
+        .save_to('local')
+        .update({ FNAME: 'dude' })
+        .save()
+        .to_object();
     } else {
       element.render(model.to_object);
     }
