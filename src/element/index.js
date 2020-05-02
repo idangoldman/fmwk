@@ -1,6 +1,6 @@
 // @flow
 
-export type QuerySelectorType = string;
+import type { QuerySelectorType } from 'helpers/flow-types';
 
 export type ComponentElementType = {|
   instance: ?HTMLElement,

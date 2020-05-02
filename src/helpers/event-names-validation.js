@@ -1,3 +1,7 @@
+// @flow
+
+import type { EventListType } from 'helpers/flow-types';
+
 /**
  * Match event names against given event names list.
  * @param  {String}      eventNames     String of event names separated by space.
@@ -11,7 +15,7 @@
  * eventNamesValidation(eventNames, DOM_EVENTS_LIST);
  * // ['click', 'mouseover']
  */
-const eventNamesValidation = (eventNames = '', eventNamesList = []) => {
+function eventNamesValidation(eventNames: string = '', eventNamesList: EventListType = []): string[] {
   const names = eventNames.split(' ');
   const list = eventNamesList.flat(3);
 

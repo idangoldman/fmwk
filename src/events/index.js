@@ -1,9 +1,9 @@
 // @flow
 
-import { insert, remove } from 'events/store';
+import type { CallbackType, EventListenerArgsType } from 'helpers/flow-types';
 import type ComponentElementType from 'element';
 
-type callbackType = (?mixed) => void;
+import { insert, remove } from 'events/store';
 
 export default class Events {
   element: ComponentElementType
@@ -12,8 +12,8 @@ export default class Events {
     this.element = element;
   }
 
-  on(name: string, callback: callbackType): void {
-    const insertEventCallback = ([type, listener]: [string, callbackType]): void => {
+  on(name: string, callback: CallbackType): void {
+    const insertEventCallback = ([type, listener]: EventListenerArgsType): void => {
       if (this.element.instance) {
         this.element.instance.addEventListener(type, listener, false);
       }
@@ -22,8 +22,8 @@ export default class Events {
     insert(this.element.toString, name, callback).forEach(insertEventCallback);
   }
 
-  once(name: string, callback: callbackType): void {
-    const insertOnceEventCallback = ([type, listener]: [string, callbackType]) => {
+  once(name: string, callback: CallbackType): void {
+    const insertOnceEventCallback = ([type, listener]: EventListenerArgsType): void => {
       if (this.element.instance) {
         this.element.instance.addEventListener(type, (event: Event) => {
           remove(this.element.toString, type, listener);
@@ -38,8 +38,8 @@ export default class Events {
     insert(this.element.toString, name, callback).forEach(insertOnceEventCallback);
   }
 
-  off(name: string, callback?: callbackType): void {
-    const removeEventCallback = ([type, listener]: [string, callbackType]): void => {
+  off(name: string, callback?: CallbackType): void {
+    const removeEventCallback = ([type, listener]: EventListenerArgsType): void => {
       if (this.element.instance) {
         this.element.instance.removeEventListener(type, listener, false);
       }

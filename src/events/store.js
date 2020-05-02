@@ -1,12 +1,19 @@
+// @flow
+
+import type {
+  CallbackType,
+  EventListenerArgsType
+} from 'helpers/flow-types';
+
 import eventNamesValidation from 'helpers/event-names-validation';
 import { DOM_EVENTS_LIST } from 'helpers/constants';
 
 const EVENTS_STORE = new Map();
 
-export const insert = (selector = '', eventNames = [], callback = undefined) => {
+export const insert = (selector: string = '', eventNames: string = '', callback: CallbackType): EventListenerArgsType[] => {
   const events = EVENTS_STORE.get(selector) || new Map();
   const validEventNames = eventNamesValidation(eventNames, DOM_EVENTS_LIST);
-  const output = [];
+  const eventListenersArgs = [];
 
   for (const validEventName of validEventNames) {
     if (events.size && events.has(validEventName)) {
@@ -20,19 +27,19 @@ export const insert = (selector = '', eventNames = [], callback = undefined) => 
       events.set(validEventName, new Set([callback]));
     }
 
-    output.push([validEventName, callback]);
+    eventListenersArgs.push([validEventName, callback]);
   }
 
   if (events.size) {
     EVENTS_STORE.set(selector, events);
   }
 
-  return output;
+  return eventListenersArgs;
 };
 
-export const remove = (selector = '', eventNames = [], callback = undefined) => {
+export const remove = (selector: string = '', eventNames: string = '', callback: CallbackType): EventListenerArgsType[] => {
   const events = EVENTS_STORE.get(selector);
-  const output = [];
+  const eventListenersArgs = [];
 
   if (events) {
     if (eventNames.length) {
@@ -43,10 +50,10 @@ export const remove = (selector = '', eventNames = [], callback = undefined) => 
           const callbacks = events.get(validEventName);
 
           if (!callback) {
-            callbacks.forEach(value => output.push([validEventName, value]));
+            callbacks.forEach(value => eventListenersArgs.push([validEventName, value]));
             callbacks.clear();
           } else if (callbacks.has(callback)) {
-            output.push([validEventName, callback]);
+            eventListenersArgs.push([validEventName, callback]);
             callbacks.delete(callback);
           }
 
@@ -60,7 +67,7 @@ export const remove = (selector = '', eventNames = [], callback = undefined) => 
     } else {
       for (const [eventName, callbacks] of events) {
         for (const _callback of callbacks) {
-          output.push([eventName, _callback]);
+          eventListenersArgs.push([eventName, _callback]);
         }
       }
 
@@ -74,5 +81,5 @@ export const remove = (selector = '', eventNames = [], callback = undefined) => 
     }
   }
 
-  return output;
+  return eventListenersArgs;
 };
