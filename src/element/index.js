@@ -1,6 +1,7 @@
 // @flow
 
 export type QuerySelectorType = string;
+
 export type ComponentElementType = {|
   instance: ?HTMLElement,
   selector: QuerySelectorType,
