@@ -13,7 +13,7 @@ class Element {
   selector: QuerySelectorType;
 
   constructor(selector: QuerySelectorType): void {
-    if (!selector.length) {
+    if (!selector) {
       throw new Error('- No query selector passed.');
     } else {
       this.selector = selector;
