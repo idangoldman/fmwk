@@ -1,32 +1,23 @@
-/**
-* Wrapper class for DOM elements, initiate by passing a selector.
-*/
+// @flow
+
+export type QuerySelectorType = string;
+export type ComponentElementType = {|
+  instance: ?HTMLElement,
+  selector: QuerySelectorType,
+  constructor(selector: QuerySelectorType): void,
+  get toString(): QuerySelectorType
+|}
+
 class Element {
-  /**
-  * Creates an element instance of the query selector passed in.
-  * @param {String} selector DOM query selector
-  * @throws When no query selector passed.
-  * @throws When no HTML elements were found via passed query selector.
-  */
-  constructor(selector = '') {
-    /**
-     * An instance of the DOM element.
-     * @member {HTMLElement}
-     * @private
-     */
-    this.instance = undefined;
+  instance: ?HTMLElement;
+  selector: QuerySelectorType;
 
-    /**
-     * An instance of the query selector string.
-     * @member {QuerySelector}
-     * @private
-     */
-    this.selector = selector;
-
+  constructor(selector: QuerySelectorType): void {
     if (!selector.length) {
       throw new Error('- No query selector passed.');
     } else {
-      this.instance = document.querySelector(selector);
+      this.selector = selector;
+      this.instance = document.querySelector(this.selector);
 
       if (this.instance === null) {
         throw new Error(`- No HTML element was found with '${selector}' selector.`);
@@ -34,11 +25,7 @@ class Element {
     }
   }
 
-  /**
-   * Get the query selector string.
-   * @returns {QuerySelector}
-   */
-  get toString() {
+  get toString(): QuerySelectorType {
     return this.selector;
   }
 }
