@@ -1,6 +1,7 @@
 .build
 .cache
 .DS_Store
+.vscode
 *.lock
 *.log
 build
