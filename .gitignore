@@ -1,9 +1,11 @@
+.build
 .cache
 .DS_Store
+*.lock
+*.log
 coverage
 dist
-docs
 DS_Store
-node_modules
+feature.code-workspace
+node_modules/
 package-lock.json
-yarn-error.log
