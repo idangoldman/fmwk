@@ -1,11 +1,11 @@
 .build
 .cache
+.coverage
 .DS_Store
 .vscode
 *.lock
 *.log
 build
-coverage
 dist
 DS_Store
 feature.code-workspace

@@ -5,7 +5,7 @@
   "version": "0.0.4",
   "author": "Idan Goldman",
   "license": "MIT",
-  "main": "./src/index.js",
+  "main": "src/index.js",
   "homepage": "https://github.com/idangoldman/feature",
   "repository": {
     "type": "git",
@@ -19,14 +19,16 @@
     "src/"
   ],
   "scripts": {
-    "test": "./node_modules/.bin/jest --config ./jest.config.json",
-    "test:watch": "./node_modules/.bin/jest --config ./jest.config.json --watchAll",
-    "test:coverage": "./node_modules/.bin/jest --config ./jest.config.json --coverage",
-    "test:coverage:open": "open coverage/lcov-report/index.html",
-    "test:update:snapshot": "./node_modules/.bin/jest --config ./jest.config.json --updateSnapshot",
-    "docs": "./node_modules/.bin/jsdoc --configure jsdoc.json",
-    "docs:open": "open docs/index.html",
-    "docs:wiki": "DIR='docs'; mkdir $DIR; ./node_modules/.bin/jsdoc2md ./src/**/*.js --configure ./jsdoc.json > $DIR/index.md"
+    "clean": "rm -fr node_modules docs/build",
+    "docs:open": "open docs/build/html/index.html",
+    "docs:requirements": "cd docs; pipenv lock -r > requirements.txt",
+    "docs": "cd docs; pipenv run make html;",
+    "reload": "yarn clean; yarn install; yarn docs",
+    "test:coverage:open": "open .coverage/lcov-report/index.html",
+    "test:coverage": "jest --config jest.config.json --coverage",
+    "test:update:snapshot": "jest --config jest.config.json --updateSnapshot",
+    "test:watch": "jest --config jest.config.json --watchAll",
+    "test": "jest --config jest.config.json"
   },
   "devDependencies": {
     "@babel/core": "^7.11.1",
@@ -44,8 +46,6 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "jest": "^26.4.0",
-    "jest-runner-eslint": "^0.10.0",
-    "jsdoc": "^3.6.5",
-    "jsdoc-to-markdown": "^6.0.1"
+    "jest-runner-eslint": "^0.10.0"
   }
 }
