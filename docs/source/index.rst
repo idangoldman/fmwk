@@ -7,14 +7,15 @@ Welcome to Feature's documentation!
 ===================================
 
 .. toctree::
+   :caption: Main
    :maxdepth: 2
-   :caption: Contents:
 
+   pages/getting-started
+   pages/structure/index
 
+.. toctree::
+   :glob:
+   :caption: Structure
+   :maxdepth: 2
 
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   pages/structure/*
