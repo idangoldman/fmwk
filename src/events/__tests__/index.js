@@ -1,5 +1,5 @@
-import Events from '/events'
-import Element from '/element'
+import Events from 'events'
+import Element from 'element'
 
 describe('Events class tested', () => {
   let element, events, mockEventFunction

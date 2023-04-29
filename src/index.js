@@ -1,7 +1,7 @@
-import Element from '/element'
-import Events from '/events'
-import Storage from '/storage'
-import onDOMContentLoaded from '/dom-content-loaded'
+import Element from 'element'
+import Events from 'events'
+import Storage from 'storage'
+import onDOMContentLoaded from 'dom-content-loaded'
 
 const component = (selector, callback) => {
   onDOMContentLoaded(() => {

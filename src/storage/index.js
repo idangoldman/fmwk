@@ -1,5 +1,5 @@
-import Transmitter from '/helpers/transmitter'
-import { STORAGE_EVENTS_LIST } from '/helpers/constants'
+import Transmitter from 'helpers/transmitter'
+import { STORAGE_EVENTS_LIST } from 'helpers/constants'
 
 export default class Storage extends Transmitter {
   constructor(type = 'local', prefix = 'store-') {
