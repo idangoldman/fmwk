@@ -1,4 +1,4 @@
-import Storage from '/storage'
+import Storage from 'storage'
 
 describe('Storage class: general functionality', () => {
   let store, windowStore, type
