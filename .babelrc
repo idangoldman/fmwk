@@ -1,9 +1,11 @@
 {
-  "presets": ["@babel/preset-env"],
-  "ignore": ["builtins"],
+  "presets": [
+      [
+        "@babel/preset-env", { "targets": { "node": "current" } }
+      ]
+    ],
+  "ignore": ["builtins", "node_modules/**/*.js"],
   "plugins": [
-    "@babel/plugin-transform-flow-strip-types",
-    "@babel/plugin-transform-modules-commonjs",
     ["module-resolver", {
       "root": ["./src"]
     }]
