@@ -24,8 +24,9 @@
     "#root/*": "./*"
   },
   "scripts": {
-    "clean": "rm -frv node_modules yarn.lock yarn-error.log",
-    "reload": "yarn clean && yarn install",
+    "autofix": "eslint --fix --ext .js ./src",
+    "clean": "rm -frv node_modules pnpm-lock.yaml",
+    "reload": "pnpm run clean && pnpm install",
     "test:coverage": "jest --config jest.config.json --coverage",
     "test:update:snapshot": "jest --config jest.config.json --updateSnapshot",
     "test:watch": "jest --config jest.config.json --watchAll",
