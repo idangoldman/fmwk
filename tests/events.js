@@ -1,10 +1,11 @@
-import Events from 'events'
-import Element from 'element'
+import { describe, it, before, beforeEach } from 'node:test';
+import Events from '#root/src/events.js'
+import Element from '#root/src/element.js'
 
 describe('Events class tested', () => {
   let element, events, mockEventFunction
 
-  beforeAll(() => {
+  before(() => {
     document.body.innerHTML = `
       <button>Click Me</button>
     `
@@ -16,27 +17,27 @@ describe('Events class tested', () => {
     mockEventFunction = jest.fn()
   })
 
-  test('Should trigger a click event', () => {
+  it('Should trigger a click event', () => {
     events.on('click', mockEventFunction)
     element.raw.click()
     expect(mockEventFunction).toHaveBeenCalled()
   })
 
-  test('Should remove a click event', () => {
+  it('Should remove a click event', () => {
     events.on('click', mockEventFunction)
     events.off('click', mockEventFunction)
     element.raw.click()
     expect(mockEventFunction).not.toHaveBeenCalled()
   })
 
-  test('Should trigger 2 events, click and focus', () => {
+  it('Should trigger 2 events, click and focus', () => {
     events.on('click focus', mockEventFunction)
     element.raw.click()
     element.raw.focus()
     expect(mockEventFunction).toHaveBeenCalledTimes(2)
   })
 
-  test('Should remove 2 events, click and focus', () => {
+  it('Should remove 2 events, click and focus', () => {
     events.on('click focus', mockEventFunction)
     events.off('click focus', mockEventFunction)
     element.raw.click()
@@ -44,14 +45,14 @@ describe('Events class tested', () => {
     expect(mockEventFunction).not.toHaveBeenCalled()
   })
 
-  test('Should remove event without specifying a callback', () => {
+  it('Should remove event without specifying a callback', () => {
     events.on('click', mockEventFunction)
     events.off('click')
     element.raw.click()
     expect(mockEventFunction).not.toHaveBeenCalled()
   })
 
-  test('Should remove 2 events without specifying a callback', () => {
+  it('Should remove 2 events without specifying a callback', () => {
     events.on('click focus', mockEventFunction)
     events.off('click focus')
     element.raw.click()
@@ -59,7 +60,7 @@ describe('Events class tested', () => {
     expect(mockEventFunction).not.toHaveBeenCalled()
   })
 
-  test('Should remove event without specifying a type or callback', () => {
+  it('Should remove event without specifying a type or callback', () => {
     events.on('click', mockEventFunction)
     events.off()
     element.raw.click()
@@ -67,14 +68,14 @@ describe('Events class tested', () => {
     expect(mockEventFunction).not.toHaveBeenCalled()
   })
 
-  test('Should call click event only once', () => {
+  it('Should call click event only once', () => {
     events.once('click', mockEventFunction)
     element.raw.click()
     element.raw.click()
     expect(mockEventFunction).toHaveBeenCalledTimes(1)
   })
 
-  test('Should throw an error, dom event not found', () => {
+  it('Should throw an error, dom event not found', () => {
     const eventNotFound = () => events.once('clicked', mockEventFunction)
     expect(eventNotFound).toThrowErrorMatchingSnapshot()
   })

@@ -1,9 +1,12 @@
-import Storage from 'storage'
+import { describe, it, before, beforeEach } from 'node:test';
+import { JSDOM } from 'jsdom'
+import Storage from '#root/src/storage.js'
 
 describe('Storage class: listeners functionality', () => {
   let store, windowStore, type, mockEventFunction
 
-  beforeAll(() => {
+  before(() => {
+    const { window } = new JSDOM();
     type = 'local'
     windowStore = window[type + 'Storage']
   })
@@ -14,58 +17,58 @@ describe('Storage class: listeners functionality', () => {
     mockEventFunction = jest.fn()
   })
 
-  test('Should listen on a set event', () => {
+  it('Should listen on a set event', () => {
     store.on('set', mockEventFunction)
     store.set('foo', 'bar')
     expect(mockEventFunction).toHaveBeenCalled()
   })
 
-  test('Should listen on a set event specific key', () => {
+  it('Should listen on a set event specific key', () => {
     store.on('set', 'foo', mockEventFunction)
     store.set('bar', 'foo')
     store.set('foo', 'bar')
     expect(mockEventFunction).toHaveBeenCalledTimes(1)
   })
 
-  test('Should listen on a get event', () => {
+  it('Should listen on a get event', () => {
     store.on('get', mockEventFunction)
     store.get('bar')
     expect(mockEventFunction).toHaveBeenCalled()
   })
 
-  test('Should listen on a get event specific key', () => {
+  it('Should listen on a get event specific key', () => {
     store.on('get', 'foo', mockEventFunction)
     store.get('bar')
     store.get('foo')
     expect(mockEventFunction).toHaveBeenCalledTimes(1)
   })
 
-  test('Should listen on a remove event', () => {
+  it('Should listen on a remove event', () => {
     store.on('remove', mockEventFunction)
     store.remove('foo')
     expect(mockEventFunction).toHaveBeenCalledTimes(1)
   })
 
-  test('Should listen on a remove event specific key', () => {
+  it('Should listen on a remove event specific key', () => {
     store.on('remove', 'foo', mockEventFunction)
     store.remove('bar')
     store.remove('foo')
     expect(mockEventFunction).toHaveBeenCalledTimes(1)
   })
 
-  test('Should listen on a clear event', () => {
+  it('Should listen on a clear event', () => {
     store.on('clear', mockEventFunction)
     store.clear()
     expect(mockEventFunction).toHaveBeenCalledTimes(1)
   })
 
-  test('Should listen on a empty event', () => {
+  it('Should listen on a empty event', () => {
     store.on('empty', mockEventFunction)
     store.empty('foo')
     expect(mockEventFunction).toHaveBeenCalledTimes(1)
   })
 
-  test('Should listen on a empty event specific key', () => {
+  it('Should listen on a empty event specific key', () => {
     store.on('empty', 'foo', mockEventFunction)
     store.empty('bar')
     store.empty('foo')

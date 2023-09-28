@@ -1,9 +1,10 @@
-import Storage from 'storage'
+import { describe, it, before, beforeEach } from 'node:test';
+import Storage from '#root/src/storage.js'
 
 describe('Storage class: general functionality', () => {
   let store, windowStore, type
 
-  beforeAll(() => {
+  before(() => {
     type = 'local'
     windowStore = window[type + 'Storage']
   })
@@ -13,7 +14,7 @@ describe('Storage class: general functionality', () => {
     windowStore.clear()
   })
 
-  test('Should set a prefix for stored keys', () => {
+  it('Should set a prefix for stored keys', () => {
     store.prefix = 'stored-'
     store.set('foo', 'bar')
 

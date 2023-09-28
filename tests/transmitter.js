@@ -1,5 +1,6 @@
-import Transmitter from 'helpers/transmitter'
-import { STORAGE_EVENTS_LIST } from 'helpers/constants'
+import { describe, it, beforeEach } from 'node:test';
+import Transmitter from '#root/src/helpers/transmitter.js'
+import { STORAGE_EVENTS_LIST } from '#root/src/helpers/constants.js'
 
 describe('Transmitter class tested', () => {
   let transmitter, mockEventFunction
@@ -9,21 +10,21 @@ describe('Transmitter class tested', () => {
     mockEventFunction = jest.fn()
   })
 
-  test('Should emit and listen to event', () => {
+  it('Should emit and listen to event', () => {
     transmitter.on('get', mockEventFunction)
     transmitter.emit('get')
 
     expect(mockEventFunction).toHaveBeenCalled()
   })
 
-  test('Should listen on a middle event', () => {
+  it('Should listen on a middle event', () => {
     transmitter.on('change', mockEventFunction)
     transmitter.emit('set')
 
     expect(mockEventFunction).toHaveBeenCalled()
   })
 
-  test('Should listen on chain of events', () => {
+  it('Should listen on chain of events', () => {
     transmitter.on('set', mockEventFunction)
     transmitter.on('change', mockEventFunction)
     transmitter.emit('set')
@@ -31,7 +32,7 @@ describe('Transmitter class tested', () => {
     expect(mockEventFunction).toHaveBeenCalledTimes(2)
   })
 
-  test('Should emit data array with arguments', () => {
+  it('Should emit data array with arguments', () => {
     const songData = ['songName', 'The Crew']
 
     transmitter.on('get', mockEventFunction)
@@ -40,7 +41,7 @@ describe('Transmitter class tested', () => {
     expect(mockEventFunction).toHaveBeenCalledWith(...songData)
   })
 
-  test('Should call mock function once with arguments', () => {
+  it('Should call mock function once with arguments', () => {
     const songData = ['songName', 'The Crew']
 
     transmitter.once('get', mockEventFunction)
@@ -51,7 +52,7 @@ describe('Transmitter class tested', () => {
     expect(mockEventFunction).toHaveBeenCalledWith(...songData)
   })
 
-  test('Should call mock function one time with a specific data key', () => {
+  it('Should call mock function one time with a specific data key', () => {
     transmitter.on('get', 'todo', mockEventFunction)
     transmitter.emit('get', 'todo')
     transmitter.emit('get')
@@ -59,7 +60,7 @@ describe('Transmitter class tested', () => {
     expect(mockEventFunction).toHaveBeenCalledTimes(1)
   })
 
-  test('Should call mock function on event name and specific data key', () => {
+  it('Should call mock function on event name and specific data key', () => {
     transmitter.on('get', 'todo', mockEventFunction)
     transmitter.on('get', mockEventFunction)
     transmitter.emit('get', 'todo')
@@ -67,7 +68,7 @@ describe('Transmitter class tested', () => {
     expect(mockEventFunction).toHaveBeenCalledTimes(2)
   })
 
-  test('Should call mock function once on data key with arguments', () => {
+  it('Should call mock function once on data key with arguments', () => {
     const songData = ['songName', 'The Crew']
 
     transmitter.on('get', 'todo', mockEventFunction)
@@ -77,7 +78,7 @@ describe('Transmitter class tested', () => {
     expect(mockEventFunction).toHaveBeenCalledWith(...songData)
   })
 
-  test('Should call mock function once with data key and data', () => {
+  it('Should call mock function once with data key and data', () => {
     const songData = ['songName', 'The Crew']
 
     transmitter.once('get', 'song', mockEventFunction)
@@ -88,7 +89,7 @@ describe('Transmitter class tested', () => {
     expect(mockEventFunction).toHaveBeenCalledWith(...songData)
   })
 
-  test('Should call off a mock callback of event name', () => {
+  it('Should call off a mock callback of event name', () => {
     transmitter.on('set', mockEventFunction)
     transmitter.off('set', mockEventFunction)
     transmitter.emit('set')
@@ -96,7 +97,7 @@ describe('Transmitter class tested', () => {
     expect(mockEventFunction).not.toHaveBeenCalled()
   })
 
-  test('Should call off a mock callback of event name with data key', () => {
+  it('Should call off a mock callback of event name with data key', () => {
     transmitter.on('set', 'todo', mockEventFunction)
     transmitter.off('set', 'todo', mockEventFunction)
     transmitter.emit('set', 'todo')
@@ -104,7 +105,7 @@ describe('Transmitter class tested', () => {
     expect(mockEventFunction).not.toHaveBeenCalled()
   })
 
-  test('Should call off all callbacks from event name', () => {
+  it('Should call off all callbacks from event name', () => {
     transmitter.on('set', mockEventFunction)
     transmitter.on('set', mockEventFunction)
     transmitter.off('set')
@@ -113,7 +114,7 @@ describe('Transmitter class tested', () => {
     expect(mockEventFunction).not.toHaveBeenCalled()
   })
 
-  test('Should call off all callbacks fron event name with data key', () => {
+  it('Should call off all callbacks fron event name with data key', () => {
     transmitter.on('set', 'todo', mockEventFunction)
     transmitter.on('set', 'todo', mockEventFunction)
     transmitter.off('set', 'todo')
@@ -122,7 +123,7 @@ describe('Transmitter class tested', () => {
     expect(mockEventFunction).not.toHaveBeenCalled()
   })
 
-  test('Should call off all callbacks', () => {
+  it('Should call off all callbacks', () => {
     transmitter.on('set', mockEventFunction)
     transmitter.on('set', mockEventFunction)
     transmitter.off()

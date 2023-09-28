@@ -1,5 +1,5 @@
-import eventNamesValidation from 'helpers/event-names-validation'
-import findReverseBranch from 'helpers/find-reverse-branch'
+import eventNamesValidation from '#root/src/helpers/event-names-validation.js'
+import findReverseBranch from '#root/src/helpers/find-reverse-branch.js'
 
 export default class Transmitter {
   constructor(eventsList = []) {
