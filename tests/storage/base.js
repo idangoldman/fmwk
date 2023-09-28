@@ -1,9 +1,10 @@
-import Storage from 'storage'
+import { describe, it, before, beforeEach } from 'node:test';
+import Storage from '#root/src/storage.js'
 
 describe('Storage class: base functionality', () => {
   let store, windowStore, type
 
-  beforeAll(() => {
+  before(() => {
     type = 'local'
     windowStore = window[type + 'Storage']
   })
@@ -13,14 +14,14 @@ describe('Storage class: base functionality', () => {
     windowStore.clear()
   })
 
-  test('Should set values in store', () => {
+  it('Should set values in store', () => {
     store.set('foo', '123')
     store.set('items', { foo: 'bar' })
 
     expect(windowStore).toHaveLength(2)
   })
 
-  test('Should get values from store', () => {
+  it('Should get values from store', () => {
     store.set('foo', '123')
     store.set('items', { foo: 'bar' })
 
@@ -31,14 +32,14 @@ describe('Storage class: base functionality', () => {
     expect(result2).toEqual({ foo: 'bar' })
   })
 
-  test('Should remove item from storage', () => {
+  it('Should remove item from storage', () => {
     store.set('foo', '123')
     store.set('bar', '321')
     store.remove('foo')
     expect(windowStore).toHaveLength(1)
   })
 
-  test('Should clear store', () => {
+  it('Should clear store', () => {
     store.set('foo', '123')
     store.set('bar', '321')
     store.clear()

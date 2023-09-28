@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Events class tested Should throw an error, dom event not found 1`] = `"- No event was found with 'clicked' name."`;
