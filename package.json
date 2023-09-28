@@ -14,12 +14,17 @@
   "bugs": {
     "url": "https://github.com/idangoldman/feature/issues"
   },
+  "engines": {
+    "node": ">=20.7.0",
+    "pnpm": ">=8.8.0"
+  },
+  "keywords": [],
   "type": "module",
-  "moduleRoots": [
-    "src/"
-  ],
+  "imports": {
+    "#root/*": "./*"
+  },
   "scripts": {
-    "clean": "rm -fr node_modules yarn.lock yarn-error.log",
+    "clean": "rm -frv node_modules yarn.lock yarn-error.log",
     "reload": "yarn clean && yarn install",
     "test:coverage": "jest --config jest.config.json --coverage",
     "test:update:snapshot": "jest --config jest.config.json --updateSnapshot",
@@ -27,24 +32,24 @@
     "test": "jest --config jest.config.json"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.5",
-    "@babel/eslint-parser": "^7.21.3",
-    "@babel/preset-env": "^7.21.5",
-    "babel-jest": "^29.5.0",
+    "@babel/core": "^7.23.0",
+    "@babel/eslint-parser": "^7.22.15",
+    "@babel/preset-env": "^7.22.20",
+    "babel-jest": "^29.7.0",
     "babel-plugin-module-resolver": "^5.0.0",
-    "eslint": "^8.39.0",
-    "eslint-config-prettier": "^8.8.0",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-import-resolver-babel-module": "^5.3.2",
-    "eslint-plugin-editorconfig": "^4.0.2",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jest": "^27.2.1",
+    "eslint-plugin-editorconfig": "^4.0.3",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-jest": "^27.4.0",
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-regex": "^1.10.0",
-    "eslint-plugin-unused-imports": "^2.0.0",
-    "jest": "^29.5.0",
-    "jest-environment-jsdom": "^29.5.0",
-    "jest-runner-eslint": "^2.0.0",
-    "jsdom": "^21.1.1",
-    "prettier": "^2.8.8"
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-runner-eslint": "^2.1.2",
+    "jsdom": "^22.1.0",
+    "prettier": "^3.0.3"
   }
 }
