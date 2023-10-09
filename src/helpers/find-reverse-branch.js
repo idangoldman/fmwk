@@ -1,23 +1,27 @@
 const findReverseBranch = (leaf = '', tree = []) => {
-  const newBranch = []
+  const reverseBranch = [];
+
+  const findBranch = (branch, currentLeaf) => {
+    const [currentBranch, leafs] = branch;
+
+    if (currentBranch === currentLeaf) {
+      reverseBranch.push(currentLeaf);
+    } else if (leafs.includes(currentLeaf)) {
+      reverseBranch.push(currentBranch, currentLeaf);
+    }
+  };
 
   if (tree.includes(leaf)) {
-    newBranch.push(leaf)
+    reverseBranch.push(leaf);
   } else {
     for (const branch of tree) {
-      if (!Array.isArray(branch)) continue
-
-      const [currentBranch, leafs] = branch
-
-      if (currentBranch === leaf) {
-        newBranch.push(leaf)
-      } else if (leafs.includes(leaf)) {
-        newBranch.push(currentBranch, leaf)
+      if (Array.isArray(branch)) {
+        findBranch(branch, leaf);
       }
     }
   }
 
-  return newBranch.reverse()
-}
+  return reverseBranch.reverse();
+};
 
-export default findReverseBranch
+export default findReverseBranch;

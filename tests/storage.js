@@ -1,7 +1,8 @@
 import { describe, it, before, beforeEach, mock } from 'node:test'
 import assert from 'node:assert'
-import Storage from '#root/src/storage.js'
 import { JSDOM } from 'jsdom'
+
+import Storage from '#root/src/storage.js'
 
 describe('Storage Class', () => {
   let store, storeType, windowStore, eventCallbackSpy
