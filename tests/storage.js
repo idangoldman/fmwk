@@ -9,10 +9,10 @@ describe('Storage Class', () => {
   before(() => {
     const DOM = new JSDOM('', { url: "https://example.org/" })
 
-    storeType = 'local'
-    global.window = DOM.window
-    windowStore = window[`${storeType}Storage`]
     eventCallbackSpy = mock.fn()
+    global.window = DOM.window
+    storeType = 'local'
+    windowStore = window[`${storeType}Storage`]
   })
 
   beforeEach(() => {
@@ -26,7 +26,7 @@ describe('Storage Class', () => {
       store.set('foo', '123')
       store.set('items', { foo: 'bar' })
 
-      assert.equal(windowStore.length, 2)
+      assert.strictEqual(windowStore.length, 2)
     })
 
     it('Should get values from store', () => {
@@ -36,7 +36,7 @@ describe('Storage Class', () => {
       const result1 = store.get('foo')
       const result2 = store.get('items')
 
-      assert.equal(result1, '123')
+      assert.strictEqual(result1, '123')
       assert.deepEqual(result2, { foo: 'bar' })
     })
 
@@ -45,7 +45,7 @@ describe('Storage Class', () => {
       store.set('bar', '321')
       store.remove('foo')
 
-      assert.equal(windowStore.length, 1)
+      assert.strictEqual(windowStore.length, 1)
     })
 
     it('Should clear store', () => {
@@ -53,7 +53,7 @@ describe('Storage Class', () => {
       store.set('bar', '321')
       store.clear()
 
-      assert.equal(windowStore.length, 0)
+      assert.strictEqual(windowStore.length, 0)
     })
 
     it('Should set a prefix for stored keys', () => {
@@ -62,7 +62,7 @@ describe('Storage Class', () => {
 
       const result = JSON.parse(windowStore.getItem('stored-foo'))
 
-      assert.equal(result, 'bar')
+      assert.strictEqual(result, 'bar')
     })
   })
 
@@ -71,7 +71,7 @@ describe('Storage Class', () => {
       store.set('emptyString', 'bar')
       store.empty('emptyString')
 
-      assert.equal(store.get('emptyString'), '')
+      assert.strictEqual(store.get('emptyString'), '')
     })
 
     it('Should empty out an array', () => {
