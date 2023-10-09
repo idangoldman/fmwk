@@ -1,4 +1,5 @@
 import { describe, it, before } from 'node:test';
+import assert from 'node:assert'
 import findReverseBranch from '#root/src/helpers/find-reverse-branch.js'
 
 describe('findReverseBranch helper function tested', () => {
@@ -16,12 +17,12 @@ describe('findReverseBranch helper function tested', () => {
   it('Should return a leaf inside a branch', () => {
     const leaf = 'leaf_2_1'
 
-    expect(findReverseBranch(leaf, tree)).toEqual(['leaf_2_1', 'branch_2'])
+    assert.deepStrictEqual(findReverseBranch(leaf, tree), ['leaf_2_1', 'branch_2'])
   })
 
   it('Should return a leaf without a branch', () => {
     const leaf = 'leaf_0_1'
 
-    expect(findReverseBranch(leaf, tree)).toEqual(['leaf_0_1'])
+    assert.deepStrictEqual(findReverseBranch(leaf, tree), ['leaf_0_1'])
   })
 })

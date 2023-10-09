@@ -1,11 +1,20 @@
-import { describe, it, before, beforeEach } from 'node:test';
-import Events from '#root/src/events.js'
+import { describe, it, before, beforeEach, mock } from 'node:test';
+import assert from 'node:assert'
+import { JSDOM } from 'jsdom'
+
+import Events from '#root/src/events/index.js'
 import Element from '#root/src/element.js'
 
 describe('Events class tested', () => {
-  let element, events, mockEventFunction
+  let element, events, eventCallbackSpy
 
   before(() => {
+    const DOM = new JSDOM('', { url: "https://example.org/" })
+
+    eventCallbackSpy = mock.fn()
+    global.window = DOM.window
+    global.document = DOM.window.document
+
     document.body.innerHTML = `
       <button>Click Me</button>
     `
@@ -14,69 +23,81 @@ describe('Events class tested', () => {
   beforeEach(() => {
     element = new Element('button')
     events = new Events(element)
-    mockEventFunction = jest.fn()
+    eventCallbackSpy.mock.resetCalls()
   })
 
   it('Should trigger a click event', () => {
-    events.on('click', mockEventFunction)
+    events.on('click', eventCallbackSpy)
     element.raw.click()
-    expect(mockEventFunction).toHaveBeenCalled()
+
+    assert.strictEqual(eventCallbackSpy.mock.callCount(), 1)
   })
 
   it('Should remove a click event', () => {
-    events.on('click', mockEventFunction)
-    events.off('click', mockEventFunction)
+    events.on('click', eventCallbackSpy)
+    events.off('click', eventCallbackSpy)
     element.raw.click()
-    expect(mockEventFunction).not.toHaveBeenCalled()
+
+    assert.strictEqual(eventCallbackSpy.mock.callCount(), 0)
   })
 
   it('Should trigger 2 events, click and focus', () => {
-    events.on('click focus', mockEventFunction)
+    events.on('click focus', eventCallbackSpy)
     element.raw.click()
     element.raw.focus()
-    expect(mockEventFunction).toHaveBeenCalledTimes(2)
+
+    assert.strictEqual(eventCallbackSpy.mock.callCount(), 2)
   })
 
   it('Should remove 2 events, click and focus', () => {
-    events.on('click focus', mockEventFunction)
-    events.off('click focus', mockEventFunction)
+    events.on('click focus', eventCallbackSpy)
+    events.off('click focus', eventCallbackSpy)
     element.raw.click()
     element.raw.focus()
-    expect(mockEventFunction).not.toHaveBeenCalled()
+
+    assert.strictEqual(eventCallbackSpy.mock.callCount(), 0)
   })
 
   it('Should remove event without specifying a callback', () => {
-    events.on('click', mockEventFunction)
+    events.on('click', eventCallbackSpy)
     events.off('click')
     element.raw.click()
-    expect(mockEventFunction).not.toHaveBeenCalled()
+
+    assert.strictEqual(eventCallbackSpy.mock.callCount(), 0)
   })
 
   it('Should remove 2 events without specifying a callback', () => {
-    events.on('click focus', mockEventFunction)
+    events.on('click focus', eventCallbackSpy)
     events.off('click focus')
     element.raw.click()
     element.raw.focus()
-    expect(mockEventFunction).not.toHaveBeenCalled()
+
+    assert.strictEqual(eventCallbackSpy.mock.callCount(), 0)
   })
 
   it('Should remove event without specifying a type or callback', () => {
-    events.on('click', mockEventFunction)
+    events.on('click', eventCallbackSpy)
     events.off()
     element.raw.click()
     element.raw.focus()
-    expect(mockEventFunction).not.toHaveBeenCalled()
+
+    assert.strictEqual(eventCallbackSpy.mock.callCount(), 0)
   })
 
   it('Should call click event only once', () => {
-    events.once('click', mockEventFunction)
+    events.once('click', eventCallbackSpy)
     element.raw.click()
     element.raw.click()
-    expect(mockEventFunction).toHaveBeenCalledTimes(1)
+
+    assert.strictEqual(eventCallbackSpy.mock.callCount(), 1)
   })
 
   it('Should throw an error, dom event not found', () => {
-    const eventNotFound = () => events.once('clicked', mockEventFunction)
-    expect(eventNotFound).toThrowErrorMatchingSnapshot()
+    const eventNotFound = () => events.once('clicked', eventCallbackSpy)
+
+    assert.throws(eventNotFound, {
+      name: 'Error',
+      message: '- No events were found with names: clicked.'
+    })
   })
 })
