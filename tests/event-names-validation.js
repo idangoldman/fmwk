@@ -1,4 +1,5 @@
 import { describe, it } from 'node:test';
+import assert from 'node:assert'
 import eventNamesValidation from '#root/src/helpers/event-names-validation.js'
 import { DOM_EVENTS_LIST } from '#root/src/helpers/constants.js'
 
@@ -7,20 +8,23 @@ describe('eventNamesValidation helper function tested', () => {
     const eventName = 'click'
     const match = ['click']
 
-    expect(eventNamesValidation(eventName, DOM_EVENTS_LIST)).toEqual(match)
+    assert.deepStrictEqual(eventNamesValidation(eventName, DOM_EVENTS_LIST), match)
   })
 
   it('Should be able validate multiple event names', () => {
     const eventName = 'click mouseover'
     const match = ['click', 'mouseover']
 
-    expect(eventNamesValidation(eventName, DOM_EVENTS_LIST)).toEqual(match)
+    assert.deepStrictEqual(eventNamesValidation(eventName, DOM_EVENTS_LIST), match)
   })
 
   it('Should not validate event names', () => {
     const eventName = 'clicked'
     const callback = () => eventNamesValidation(eventName, DOM_EVENTS_LIST)
 
-    expect(callback).toThrowErrorMatchingSnapshot()
+    assert.throws(callback, {
+      name: 'Error',
+      message: '- No events were found with names: clicked.'
+    })
   })
 })
