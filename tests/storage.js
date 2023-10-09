@@ -37,7 +37,7 @@ describe('Storage Class', () => {
       const result2 = store.get('items')
 
       assert.strictEqual(result1, '123')
-      assert.deepEqual(result2, { foo: 'bar' })
+      assert.deepStrictEqual(result2, { foo: 'bar' })
     })
 
     it('Should remove item from storage', () => {
