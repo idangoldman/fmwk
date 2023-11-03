@@ -28,8 +28,8 @@
     "clean": "rm -frv node_modules",
     "reload": "pnpm run clean && pnpm install --frozen-lockfile",
     "load": "pnpm run clean && pnpm install",
-    "test:dev": "node --watch --test tests/**/*.js",
-    "test": "node --test tests/**/*.js"
+    "test:dev": "node --test --watch tests/*.js",
+    "test": "node --test tests/*.js"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.15",
