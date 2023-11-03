@@ -54,12 +54,5 @@
       "never"
     ],
     "standard/no-callback-literal": "off"
-  },
-  "overrides": [
-    {
-      "files": [
-        "src/**/test/**"
-      ]
-    }
-  ]
+  }
 }
