@@ -1,5 +1,5 @@
 import Element from '#root/src/element.js'
-import Events from '#root/src/events.js'
+import Events from '#root/src/events/index.js'
 import Storage from '#root/src/storage.js'
 import onDOMContentLoaded from '#root/src/dom-content-loaded.js'
 

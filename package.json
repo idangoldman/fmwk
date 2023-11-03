@@ -1,22 +1,22 @@
 {
-  "name": "feature",
-  "title": "Feature",
+  "name": "fmwk.js",
+  "title": "fmwk.js",
   "description": "Opinionated javascript framework, built with jQuery and Rails in mind.",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "author": "Idan Goldman",
   "license": "MIT",
   "main": "src/index.js",
-  "homepage": "https://github.com/idangoldman/feature",
+  "homepage": "https://github.com/idangoldman/fmwk",
   "repository": {
     "type": "git",
-    "url": "https://github.com/idangoldman/feature.git"
+    "url": "https://github.com/idangoldman/fmwk.git"
   },
   "bugs": {
-    "url": "https://github.com/idangoldman/feature/issues"
+    "url": "https://github.com/idangoldman/fmwk/issues"
   },
   "engines": {
     "node": ">=20.7.0",
-    "pnpm": ">=8.8.0"
+    "pnpm": ">=8.10.2"
   },
   "keywords": [],
   "type": "module",
@@ -31,11 +31,15 @@
     "test": "node --test tests/**/*.js"
   },
   "devDependencies": {
-    "eslint": "^8.51.0",
+    "@babel/eslint-parser": "^7.22.15",
+    "@babel/plugin-transform-runtime": "^7.23.2",
+    "@babel/preset-env": "^7.23.2",
+    "eslint": "^8.52.0",
     "eslint-config-prettier": "^9.0.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-import-resolver-node": "^0.3.9",
     "eslint-plugin-editorconfig": "^4.0.3",
-    "eslint-plugin-import": "^2.28.1",
-    "eslint-plugin-jest": "^27.4.2",
+    "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-json": "^3.1.0",
     "eslint-plugin-regex": "^1.10.0",
     "eslint-plugin-unused-imports": "^3.0.0",

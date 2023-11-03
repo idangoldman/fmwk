@@ -11,7 +11,7 @@ describe('Storage Class', () => {
     const DOM = new JSDOM('', { url: "https://example.org/" })
 
     eventCallbackSpy = mock.fn()
-    global.window = DOM.window
+    globalThis.window = DOM.window
     storeType = 'local'
     windowStore = window[`${storeType}Storage`]
   })

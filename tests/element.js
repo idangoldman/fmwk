@@ -7,9 +7,9 @@ describe('Element class tested', () => {
   before(() => {
     const DOM = new JSDOM('', { url: "https://example.org/" })
 
-    global.HTMLElement = DOM.window.HTMLElement
-    global.document = DOM.window.document
-    global.document.body.innerHTML = `
+    globalThis.HTMLElement = DOM.window.HTMLElement
+    globalThis.document = DOM.window.document
+    globalThis.document.body.innerHTML = `
       <a href="#" class="link">Link</a>
     `
   })
