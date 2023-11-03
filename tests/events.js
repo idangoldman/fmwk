@@ -12,8 +12,8 @@ describe('Events class tested', () => {
     const DOM = new JSDOM('', { url: "https://example.org/" })
 
     eventCallbackSpy = mock.fn()
-    global.window = DOM.window
-    global.document = DOM.window.document
+    globalThis.window = DOM.window
+    globalThis.document = DOM.window.document
 
     document.body.innerHTML = `
       <button>Click Me</button>

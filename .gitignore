@@ -9,6 +9,5 @@ build
 coverage
 dist
 DS_Store
-feature.code-workspace
 node_modules/
 package-lock.json
