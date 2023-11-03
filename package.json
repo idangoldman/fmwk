@@ -25,8 +25,9 @@
   },
   "scripts": {
     "autofix": "eslint --fix --ext .js ./src",
-    "clean": "rm -frv node_modules pnpm-lock.yaml",
-    "reload": "pnpm run clean && pnpm install",
+    "clean": "rm -frv node_modules",
+    "reload": "pnpm run clean && pnpm install --frozen-lockfile",
+    "load": "pnpm run clean && pnpm install",
     "test:dev": "node --watch --test tests/**/*.js",
     "test": "node --test tests/**/*.js"
   },
