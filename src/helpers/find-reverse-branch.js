@@ -1,4 +1,4 @@
-const findReverseBranch = (leaf = '', tree = []) => {
+export default function findReverseBranch(leaf = '', tree = []) {
   const reverseBranch = [];
 
   const findBranch = (branch, currentLeaf) => {
@@ -23,5 +23,3 @@ const findReverseBranch = (leaf = '', tree = []) => {
 
   return reverseBranch.reverse();
 };
-
-export default findReverseBranch;

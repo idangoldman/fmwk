@@ -1,4 +1,4 @@
-const eventNamesValidation = (eventNames = '', eventNamesList = []) => {
+export default function eventNamesValidation(eventNames = '', eventNamesList = []) {
   const names = eventNames.split(' ');
   const flatEventNamesList = eventNamesList.flat(3);
   const missingEvents = names.filter(name => !flatEventNamesList.includes(name));
@@ -9,5 +9,3 @@ const eventNamesValidation = (eventNames = '', eventNamesList = []) => {
 
   return names
 };
-
-export default eventNamesValidation
