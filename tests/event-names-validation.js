@@ -1,7 +1,7 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert'
 import eventNamesValidation from '#root/src/helpers/event-names-validation.js'
-import { DOM_EVENTS_LIST } from '#root/src/helpers/constants.js'
+import { DOM_EVENTS_LIST } from '#root/src/events/constants.js'
 
 describe('eventNamesValidation helper function tested', () => {
   it('Should be able validate event name', () => {
@@ -24,7 +24,7 @@ describe('eventNamesValidation helper function tested', () => {
 
     assert.throws(callback, {
       name: 'Error',
-      message: '- No events were found with names: clicked.'
+      message: 'No events were found with names: clicked'
     })
   })
 })

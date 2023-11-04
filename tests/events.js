@@ -97,7 +97,7 @@ describe('Events class tested', () => {
 
     assert.throws(eventNotFound, {
       name: 'Error',
-      message: '- No events were found with names: clicked.'
+      message: 'No events were found with names: clicked'
     })
   })
 })

@@ -26,7 +26,7 @@ describe('Element class tested', () => {
 
     assert.throws(element, {
       name: 'Error',
-      message: '- No query selector passed.'
+      message: 'No query selector passed'
     })
   })
 
@@ -35,7 +35,7 @@ describe('Element class tested', () => {
 
     assert.throws(element, {
       name: 'Error',
-      message: '- No HTML element was found with ".linked" selector.'
+      message: 'No HTML element was found with ".linked" selector'
     })
   })
 })

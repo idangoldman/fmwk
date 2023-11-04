@@ -6,12 +6,3 @@ export const DOM_EVENTS_LIST = [
   ['form', ['change', 'submit', 'reset', 'valid', 'invalid']],
   ['element', ['blur', 'focus', 'focusin', 'focusout']]
 ]
-
-export const STORAGE_EVENTS_LIST = [
-  ['change', ['remove', 'set', 'clear', 'empty']],
-  'get'
-]
-
-export const STORAGE_TYPES_LIST = [
-  'local', 'session', 'cookie'
-]
