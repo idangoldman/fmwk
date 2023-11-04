@@ -1,14 +1,11 @@
-const eventNamesValidation = (eventNames = '', eventNamesList = []) => {
-  const names = eventNames.split(' ')
-  const list = eventNamesList.flat(3)
+export default function eventNamesValidation(eventNames = '', eventNamesList = []) {
+  const names = eventNames.split(' ');
+  const flatEventNamesList = eventNamesList.flat(3);
+  const missingEvents = names.filter(name => !flatEventNamesList.includes(name));
 
-  for (const name of names) {
-    if (!list.includes(name)) {
-      throw new Error(`- No event was found with '${name}' name.`)
-    }
+  if (missingEvents.length > 0) {
+    throw new Error(`No events were found with names: ${missingEvents.join(', ')}`);
   }
 
   return names
-}
-
-export default eventNamesValidation
+};

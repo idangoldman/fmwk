@@ -1,8 +1,10 @@
 {
   "env": {
     "browser": true,
-    "es2021": true,
-    "jest/globals": true
+    "es2021": true
+  },
+  "globals": {
+    "globalThis": "readonly"
   },
   "parser": "@babel/eslint-parser",
   "parserOptions": {
@@ -12,38 +14,45 @@
   },
   "settings": {
     "import/resolver": {
-      "babel-module": {}
+      "node": {
+        "paths": [
+          "./"
+        ],
+        "extensions": [
+          ".js"
+        ]
+      },
+      "alias": {
+        "map": [
+          [
+            "#root",
+            "./"
+          ]
+        ],
+        "extensions": [
+          ".js"
+        ]
+      }
     }
   },
   "extends": [
     "eslint:recommended",
     "plugin:editorconfig/noconflict",
     "plugin:import/recommended",
-    "plugin:jest/recommended",
     "plugin:json/recommended",
     "prettier"
   ],
   "plugins": [
-    "jest",
     "editorconfig",
     "regex",
     "unused-imports"
   ],
   "rules": {
-    "jest/no-disabled-tests": "warn",
-    "jest/no-focused-tests": "error",
-    "jest/no-identical-title": "error",
-    "jest/prefer-to-have-length": "warn",
-    "jest/valid-expect": "error",
     "import/no-absolute-path": "off",
-    "space-before-function-paren": ["error", "never"],
+    "space-before-function-paren": [
+      "error",
+      "never"
+    ],
     "standard/no-callback-literal": "off"
-  },
-  "overrides": [
-    {
-      "files": ["src/**/test/**"],
-      "plugins": ["jest"],
-      "extends": ["plugin:jest/recommended"]
-    }
-  ]
+  }
 }
