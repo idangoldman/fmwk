@@ -1,4 +1,4 @@
-const onDOMContentLoaded = () => {
+export default (function onDOMContentLoaded() {
   const callbacks = [];
   let domLoaded = false;
 
@@ -22,6 +22,4 @@ const onDOMContentLoaded = () => {
       callbacks.push(callback);
     }
   };
-};
-
-export default onDOMContentLoaded();
+})();
