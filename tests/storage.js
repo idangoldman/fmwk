@@ -65,6 +65,20 @@ describe('Storage Class', () => {
     })
   })
 
+  describe('Has', () => {
+    it('Should return true if key exists', () => {
+      store.set('candy', 'sneakers')
+
+      assert.strictEqual(store.has('candy'), true)
+    })
+
+    it('Should return false if key does not exist', () => {
+      store.set('candies', ['sneakers', 'mars'])
+
+      assert.strictEqual(store.has('vagtables'), false)
+    })
+  })
+
   describe('Empty', () => {
     it('Should empty out a string', () => {
       store.set('emptyString', 'bar')
