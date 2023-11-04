@@ -53,6 +53,18 @@ export default class Storage extends Transmitter {
     }
   }
 
+  has(key = '') {
+    try {
+      const fullKey = this.getFullKey(key);
+      const hasValue = this.store.getItem(fullKey) !== null;
+      this.emit('has', key, [key, hasValue]);
+      return hasValue;
+    } catch (error) {
+      console.error(`Error checking key "${key}": ${error.message}`);
+      return false;
+    }
+  }
+
   remove(key = '') {
     const fullKey = this.getFullKey(key);
     this.store.removeItem(fullKey);
