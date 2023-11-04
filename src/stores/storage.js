@@ -2,12 +2,14 @@ import Transmitter from '#root/src/helpers/transmitter.js'
 import { STORAGE_TYPES, STORE_EVENTS_LIST } from '#root/src/stores/constants.js'
 
 export default class Storage extends Transmitter {
+  #prefix = '';
+  #separator = '';
+
   constructor(type = 'local', prefix = 'store', separator = '-') {
     super(STORE_EVENTS_LIST);
 
-    this.prefix = prefix;
-    this.separator = separator;
-    this.type = type;
+    this.#prefix = prefix;
+    this.#separator = separator;
 
     if (type in STORAGE_TYPES) {
       this.store = window[STORAGE_TYPES[type]];
@@ -16,14 +18,22 @@ export default class Storage extends Transmitter {
     }
   }
 
-  getFullKey(key) {
+  get prefix() {
+    return this.#prefix;
+  }
+
+  get separator() {
+    return this.#separator;
+  }
+
+  getFullKey(key = '') {
     return `${this.prefix}${this.separator}${key}`;
   }
 
-  get(key) {
+  get(key = '') {
     try {
       const fullKey = this.getFullKey(key);
-      const value = this.store.get(fullKey);
+      const value = JSON.parse(this.store.getItem(fullKey));
       this.emit('get', key, [key, value]);
       return value;
     } catch (error) {
@@ -32,10 +42,10 @@ export default class Storage extends Transmitter {
     }
   }
 
-  set(key, value) {
+  set(key = '', value = '') {
     try {
       const fullKey = this.getFullKey(key);
-      this.store.set(fullKey, value);
+      this.store.setItem(fullKey, JSON.stringify(value));
       this.emit('set', key, [key, value]);
     } catch (error) {
       console.error(`Error setting key "${key}": ${error.message}`);
@@ -43,9 +53,9 @@ export default class Storage extends Transmitter {
     }
   }
 
-  remove(key) {
+  remove(key = '') {
     const fullKey = this.getFullKey(key);
-    this.store.remove(fullKey);
+    this.store.removeItem(fullKey);
     this.emit('remove', key, [key, null]);
   }
 
