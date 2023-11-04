@@ -5,7 +5,7 @@ export default class Storage extends Transmitter {
   #prefix = '';
   #separator = '';
 
-  constructor(type = 'local', prefix = 'store', separator = '-') {
+  constructor(type = 'local', prefix = '', separator = '') {
     super(STORE_EVENTS_LIST);
 
     this.#prefix = prefix;
