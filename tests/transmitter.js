@@ -2,7 +2,7 @@ import { describe, it, before, beforeEach, mock } from 'node:test';
 import assert from 'node:assert'
 
 import Transmitter from '#root/src/helpers/transmitter.js'
-import { STORAGE_EVENTS_LIST } from '#root/src/helpers/constants.js'
+import { STORE_EVENTS_LIST } from '#root/src/stores/constants.js'
 
 describe('Transmitter class tested', () => {
   let transmitter, eventCallbackSpy
@@ -12,7 +12,7 @@ describe('Transmitter class tested', () => {
   })
 
   beforeEach(() => {
-    transmitter = new Transmitter(STORAGE_EVENTS_LIST)
+    transmitter = new Transmitter(STORE_EVENTS_LIST)
     eventCallbackSpy.mock.resetCalls()
   })
 
