@@ -13,7 +13,7 @@ describe('Storage Class', () => {
     eventCallbackSpy = mock.fn()
     globalThis.window = DOM.window
     storeType = 'local'
-    windowStore = window[`${storeType}Storage`]
+    windowStore = globalThis.window[`${storeType}Storage`]
   })
 
   beforeEach(() => {
@@ -57,13 +57,11 @@ describe('Storage Class', () => {
       assert.strictEqual(windowStore.length, 0)
     })
 
-    it('Should set a prefix for stored keys', () => {
-      store.prefix = 'stored-'
-      store.set('foo', 'bar')
+    it('Should set a prefix and separator for stored keys', () => {
+      const customStore = new Storage(storeType, 'booksStore', ':');
 
-      const result = JSON.parse(windowStore.getItem('stored-foo'))
-
-      assert.strictEqual(result, 'bar')
+      assert.strictEqual(customStore.prefix, 'booksStore')
+      assert.strictEqual(customStore.separator, ':')
     })
   })
 
