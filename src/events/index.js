@@ -1,4 +1,4 @@
-import { insert, remove } from '#root/src/events/store.js'
+import { insert, remove } from '~/src/events/store.js'
 
 export default class Events {
   constructor(element) {

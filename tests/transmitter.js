@@ -1,8 +1,8 @@
 import { describe, it, before, beforeEach, mock } from 'node:test';
 import assert from 'node:assert'
 
-import Transmitter from '#root/src/helpers/transmitter.js'
-import { STORE_EVENTS_LIST } from '#root/src/stores/constants.js'
+import Transmitter from '~/src/helpers/transmitter.js'
+import { STORE_EVENTS_LIST } from '~/src/stores/constants.js'
 
 describe('Transmitter class tested', () => {
   let transmitter, eventCallbackSpy

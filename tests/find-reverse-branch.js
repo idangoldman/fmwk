@@ -1,6 +1,6 @@
 import { describe, it, before } from 'node:test';
 import assert from 'node:assert'
-import findReverseBranch from '#root/src/helpers/find-reverse-branch.js'
+import findReverseBranch from '~/src/helpers/find-reverse-branch.js'
 
 describe('findReverseBranch helper function tested', () => {
   let tree

@@ -1,5 +1,5 @@
-import eventNamesValidation from '#root/src/helpers/event-names-validation.js'
-import { DOM_EVENTS_LIST } from '#root/src/events/constants.js'
+import eventNamesValidation from '~/src/helpers/event-names-validation.js'
+import { DOM_EVENTS_LIST } from '~/src/events/constants.js'
 
 const EVENTS_STORE = new Map()
 

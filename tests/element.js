@@ -1,7 +1,7 @@
 import { describe, it, before } from 'node:test';
 import assert from 'node:assert'
 import { JSDOM } from 'jsdom'
-import Element from '#root/src/element.js'
+import Element from '~/src/element.js'
 
 describe('Element class tested', () => {
   before(() => {

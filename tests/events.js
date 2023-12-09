@@ -2,8 +2,8 @@ import { describe, it, before, beforeEach, mock } from 'node:test';
 import assert from 'node:assert'
 import { JSDOM } from 'jsdom'
 
-import Events from '#root/src/events/index.js'
-import Element from '#root/src/element.js'
+import Events from '~/src/events/index.js'
+import Element from '~/src/element.js'
 
 describe('Events class tested', () => {
   let element, events, eventCallbackSpy

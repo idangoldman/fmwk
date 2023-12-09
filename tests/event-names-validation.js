@@ -1,7 +1,7 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert'
-import eventNamesValidation from '#root/src/helpers/event-names-validation.js'
-import { DOM_EVENTS_LIST } from '#root/src/events/constants.js'
+import eventNamesValidation from '~/src/helpers/event-names-validation.js'
+import { DOM_EVENTS_LIST } from '~/src/events/constants.js'
 
 describe('eventNamesValidation helper function tested', () => {
   it('Should be able validate event name', () => {

@@ -1,5 +1,5 @@
-import Transmitter from '#root/src/helpers/transmitter.js'
-import { STORAGE_TYPES, STORE_EVENTS_LIST } from '#root/src/stores/constants.js'
+import Transmitter from '~/src/helpers/transmitter.js'
+import { STORAGE_TYPES, STORE_EVENTS_LIST } from '~/src/stores/constants.js'
 
 export default class Storage extends Transmitter {
   #prefix = '';

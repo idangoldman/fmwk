@@ -11,5 +11,5 @@ dist
 DS_Store
 node_modules/
 package-lock.json
-
+.parcel-cache
 !pnpm-lock.yaml
