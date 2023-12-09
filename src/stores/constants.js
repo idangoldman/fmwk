@@ -1,6 +1,8 @@
-export const STORAGE_TYPES = {
+export const STORE_TYPES = {
   local: 'localStorage',
   session: 'sessionStorage',
+  // memory: 'memoryStorage',
+  cookie: 'cookie'
 }
 
 export const STORE_EVENTS_LIST = [
