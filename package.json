@@ -25,7 +25,7 @@
   },
   "scripts": {
     "autofix": "eslint --fix --ext .js ./src",
-    "clean": "rm -frv node_modules pnpm-lock.yaml .build .parcel-cache",
+    "clean": "rm -frv node_modules pnpm-lock.yaml dist .parcel-cache",
     "dist": "parcel build src/index.js --no-cache --dist-dir dist",
     "load": "pnpm run clean && pnpm install",
     "reload": "pnpm run clean && pnpm install",
@@ -33,8 +33,6 @@
     "test": "node --test tests/*.js"
   },
   "devDependencies": {
-    "@parcel/config-default": "^2.10.3",
-    "@parcel/resolver-glob": "^2.10.3",
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-alias": "^1.1.2",
